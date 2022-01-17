@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import PageTempate from 'components/templates/PageTempate';
-import SignInForm from 'features/Authentication/organisms/SignInForm';
+import React  from 'react';
+import MainTemplate from "components/templates/MainTemplate";
+import SignInForm from "features/Authentication/organisms/SignInForm";
 
-export class SignIn extends Component {
-
-  render() {
-    return (
-      <PageTempate children={<SignInForm />}/>
-    );
-  }
+const SignIn = () => {
+  return (
+    <MainTemplate>
+      <SignInForm />
+    </MainTemplate>
+  );
 }
 
 export default SignIn;

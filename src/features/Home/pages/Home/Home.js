@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import PageTempate from 'components/templates/PageTempate';
+import React from 'react';
+import MainTemplate from 'components/templates/MainTemplate';
 
-export class Home extends Component {
-
-  render() {
-    return (
-      <PageTempate children={'Home page'}/>
-    );
-  }
+const Home = () => {
+  return (
+    <MainTemplate>
+      {'Home page'}
+    </MainTemplate>
+  );
 }
 
 export default Home;

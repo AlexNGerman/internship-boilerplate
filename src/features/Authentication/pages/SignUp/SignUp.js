@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import MainTemplate from "components/templates/MainTemplate";
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
-import PageTempate from "components/templates/PageTempate/pageTemplate";
 
-export class SignUp extends Component {
-
-  render() {
-    return (
-      <PageTempate children={<SignUpForm />}/>
-    );
-  }
+const SignUp = () => {
+  return (
+    <MainTemplate>
+      <SignUpForm />
+    </MainTemplate>
+  );
 }
 
 export default SignUp;
