@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { TextField } from 'formik-mui';
@@ -30,7 +30,7 @@ const SIGNUP_SCHEMA = Yup.object().shape({
     .required("Please enter your password")
     .matches(
       AUTH_VALIDATION_SETS.PASSWORD_MATCH_STRING,
-      `Password must contain at least ${AUTH_VALIDATION_SETS.PASSWORD_MATCH_STRING} characters, one uppercase, one number and one special case character`
+      `Password must contain at least ${AUTH_VALIDATION_SETS.PASSWORD_LENGTH} characters, one uppercase, one number and one special case character`
     ),
 });
 
@@ -44,12 +44,13 @@ const INITIAL_VALUES = {
 
 const SignUpForm = () => {
   const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
-
+  const [success, setSuccess] = useState(false);
   const onSubmit = async (values, { setSubmitting }) => {
     await createUser(values).then(result => {
-      if (result.error) {
-        console.error('Oh no!', result.error.message);
-      }
+      if(result.data.createUser != null)
+        setSuccess(true);
+      else
+        setSuccess(false);
     });
     setSubmitting(false);
   }
@@ -75,6 +76,16 @@ const SignUpForm = () => {
                 alignItems: 'center',
               }}
             >
+              {success &&
+                <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+                  <Grid item xs={12}>
+                    <Alert severity="success" align='left'>
+                      <AlertTitle>Success</AlertTitle>
+                      User was registered
+                    </Alert>
+                  </Grid>
+                </Grid>
+              }
               {error &&
                 <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
                   <Grid item xs={12}>
