@@ -7,19 +7,21 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
-import { CREATE_USER } from 'mutations/CreateUser/createUser';
 import { useMutation } from 'urql';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { CREATE_USER } from 'mutations/CreateUser/createUser';
+import { AUTH_VALIDATION_SETS } from 'constants/auth';
+
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
+    .min(AUTH_VALIDATION_SETS.MIN_LENGTH, `First name can't be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
+    .max(AUTH_VALIDATION_SETS.MAX_LENGTH, `First name should be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
     .required('Required'),
   lastName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
+    .min(AUTH_VALIDATION_SETS.MIN_LENGTH, `First name can't be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
+    .max(AUTH_VALIDATION_SETS.MAX_LENGTH, `First name should be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
     .required('Required'),
   email: Yup.string()
     .email('Invalid email')
@@ -27,8 +29,8 @@ const SIGNUP_SCHEMA = Yup.object().shape({
   password: Yup.string()
     .required("Please enter your password")
     .matches(
-      /^.*(?=.{10,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-      "Password must contain at least 10 characters, one uppercase, one number and one special case character"
+      AUTH_VALIDATION_SETS.PASSWORD_MATCH_STRING,
+      `Password must contain at least ${AUTH_VALIDATION_SETS.PASSWORD_MATCH_STRING} characters, one uppercase, one number and one special case character`
     ),
 });
 
@@ -43,7 +45,7 @@ const INITIAL_VALUES = {
 const SignUpForm = () => {
   const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
 
-  const onSubmit = async (values, { setSubmitting }, {error}) => {
+  const onSubmit = async (values, { setSubmitting }) => {
     await createUser(values).then(result => {
       if (result.error) {
         console.error('Oh no!', result.error.message);
@@ -60,9 +62,7 @@ const SignUpForm = () => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={SIGNUP_SCHEMA}
-        onSubmit={(values, setSubmitting) => {
-          onSubmit(values, setSubmitting, {error});
-        }}
+        onSubmit={onSubmit}
       >
         {({ isSubmitting}) => (
           <Grid item xs={12} sm={8} md={5}>
