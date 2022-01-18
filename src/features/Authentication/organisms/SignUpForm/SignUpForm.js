@@ -118,7 +118,7 @@ const SignUpForm = () => {
                       sx={{ mt: 3, mb: 2 }}
                       disabled={fetching}
                     >
-                      Sign In {fetching && <CircularProgress color="inherit" /> }
+                      {fetching ? <CircularProgress color="inherit" /> : "Sign In"}
                     </Button>
                   </Grid>
                 </Grid>
