@@ -88,16 +88,16 @@ const SignUpForm = () => {
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="firstName" fullWidth label="First name" placeholder="First name" variant="outlined" disabled={isSubmitting}/>
+                    <Field component={TextField} name="firstName" fullWidth label="First name" placeholder="First name" variant="outlined" />
                   </Grid>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="lastName" fullWidth label="Last name" placeholder="Last name" variant="outlined" disabled={isSubmitting}/>
+                    <Field component={TextField} name="lastName" fullWidth label="Last name" placeholder="Last name" variant="outlined" />
                   </Grid>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="email" type="email" fullWidth label="Email" placeholder="email@mail.com" variant="outlined" disabled={isSubmitting}/>
+                    <Field component={TextField} name="email" type="email" fullWidth label="Email" placeholder="email@mail.com" variant="outlined" />
                   </Grid>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="password" type="password" fullWidth label="Password" placeholder="Password" variant="outlined" disabled={isSubmitting} />
+                    <Field component={TextField} name="password" type="password" fullWidth label="Password" placeholder="Password" variant="outlined" />
                   </Grid>
                   <Grid item xs={12}>
                     <Button
@@ -105,9 +105,9 @@ const SignUpForm = () => {
                       fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2 }}
-                      disabled={isSubmitting}
+                      disabled={fetching}
                     >
-                      Sign In {isSubmitting && fetching && <CircularProgress color="inherit" /> }
+                      Sign In {fetching && <CircularProgress color="inherit" /> }
                     </Button>
                   </Grid>
                 </Grid>
