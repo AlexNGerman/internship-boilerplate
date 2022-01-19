@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { TextField } from 'formik-mui';
@@ -43,29 +43,20 @@ const INITIAL_VALUES = {
 }
 
 const SignUpForm = () => {
-  const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
-  const [success, setSuccess] = useState(false);
+  const [{ fetching, error, data }, createUser] = useMutation(CREATE_USER);
   const onSubmit = async (values, { setSubmitting }) => {
-    await createUser(values).then(result => {
-      if(result.data.createUser != null)
-        setSuccess(true);
-      else
-        setSuccess(false);
-    });
+    await createUser(values);
     setSubmitting(false);
   }
 
   return (
     <div>
-      <Typography variant="h3" component="div" gutterBottom align="center">
-        Sign Up
-      </Typography>
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={SIGNUP_SCHEMA}
         onSubmit={onSubmit}
       >
-        {({ isSubmitting}) => (
+        {({ isSubmitting }) => (
           <Grid item xs={12} sm={8} md={5}>
             <Box
               sx={{
@@ -76,7 +67,11 @@ const SignUpForm = () => {
                 alignItems: 'center',
               }}
             >
-              {success &&
+              <Typography variant="h3" component="div" gutterBottom align="center">
+                Sign Up
+              </Typography>
+
+              {(data && data.createUser !== null) &&
                 <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
                   <Grid item xs={12}>
                     <Alert severity="success" align='left'>
@@ -117,7 +112,7 @@ const SignUpForm = () => {
                       fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2 }}
-                      disabled={fetching}
+                      disabled={isSubmitting}
                     >
                       {fetching ? <CircularProgress color="inherit" /> : "Sign In"}
                     </Button>

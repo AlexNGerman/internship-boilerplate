@@ -9,20 +9,18 @@ import Home from 'features/Home/pages/Home';
 import theme from './utils/theme';
 import { APP_ROUTES } from 'constants/routes';
 
-const Router = () => {
-  return (
-    <Fragment>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Routes>
-            <Route exact path={APP_ROUTES.HOME} element={<Home/>} />
-            <Route exact path={APP_ROUTES.SIGNIN} element={<SignIn/>} />
-            <Route exact path={APP_ROUTES.SIGNUP} element={<SignUp/>} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </Fragment>
-  );
-}
+const Router = () => (
+  <Fragment>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path={APP_ROUTES.HOME} element={<Home/>} />
+          <Route exact path={APP_ROUTES.SIGNIN} element={<SignIn/>} />
+          <Route exact path={APP_ROUTES.SIGNUP} element={<SignUp/>} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  </Fragment>
+);
 
 export default Router;
