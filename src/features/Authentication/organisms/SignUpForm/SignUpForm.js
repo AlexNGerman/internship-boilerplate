@@ -112,6 +112,7 @@ const SignUpForm = () => {
                   </Grid>
                   <Grid item xs={12}>
                     <Button
+                      aria-label="submit"
                       type="submit"
                       fullWidth
                       variant="contained"
