@@ -8,10 +8,7 @@ export const CREATE_USER = gql`
       firstName: $firstName,
       lastName: $lastName
     ) {
-      email
-      firstName
       id
-      lastName
     }
   }
 `;

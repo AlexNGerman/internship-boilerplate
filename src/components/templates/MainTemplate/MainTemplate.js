@@ -9,7 +9,7 @@ const MainTemplate = (props) =>{
       <CssBaseline />
       <AppHeader />
       <main>
-        <Container sx={{ py: 8 }} maxWidth="md" align="center">
+        <Container maxWidth="md" align="center">
           {props.children}
         </Container>
       </main>

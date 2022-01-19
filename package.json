@@ -49,6 +49,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "eslint": "^7.11.0",
-    "eslint-plugin-jest": "^25.3.0"
+    "eslint-plugin-jest": "^25.3.0",
+    "wonka": "^4.0.15"
   }
 }
