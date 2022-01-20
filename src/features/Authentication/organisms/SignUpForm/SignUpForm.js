@@ -43,6 +43,7 @@ const INITIAL_VALUES = {
 
 const SignUpForm = () => {
   const [{ fetching, error, data }, createUser] = useMutation(CREATE_USER);
+  const success = data && data.createUser !== null;
   const onSubmit = async (values, { setSubmitting }) => {
     await createUser(values);
     setSubmitting(false);
@@ -70,7 +71,7 @@ const SignUpForm = () => {
                 Sign Up
               </Typography>
 
-              {(data && data.createUser !== null) &&
+              {success &&
                 <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
                   <Grid item xs={12}>
                     <Alert severity="success" align='left'>
