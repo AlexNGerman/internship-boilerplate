@@ -11,17 +11,17 @@ import { useMutation } from 'urql';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { CREATE_USER } from 'mutations/CreateUser/createUser';
-import { AUTH_VALIDATION_SETS } from 'constants/auth';
+import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_MATCH_STRING  } from 'constants/auth';
 
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
-    .min(AUTH_VALIDATION_SETS.MIN_LENGTH, `First name can't be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
-    .max(AUTH_VALIDATION_SETS.MAX_LENGTH, `First name should be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
+    .min(MIN_LENGTH, `First name can't be less then ${MIN_LENGTH} letters`)
+    .max(MAX_LENGTH, `First name should be less then ${MIN_LENGTH} letters`)
     .required('Required'),
   lastName: Yup.string()
-    .min(AUTH_VALIDATION_SETS.MIN_LENGTH, `First name can't be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
-    .max(AUTH_VALIDATION_SETS.MAX_LENGTH, `First name should be less then ${AUTH_VALIDATION_SETS.MIN_LENGTH} letters`)
+    .min(MIN_LENGTH, `First name can't be less then ${MIN_LENGTH} letters`)
+    .max(MAX_LENGTH, `First name should be less then ${MIN_LENGTH} letters`)
     .required('Required'),
   email: Yup.string()
     .email('Invalid email')
@@ -29,8 +29,8 @@ const SIGNUP_SCHEMA = Yup.object().shape({
   password: Yup.string()
     .required("Please enter your password")
     .matches(
-      AUTH_VALIDATION_SETS.PASSWORD_MATCH_STRING,
-      `Password must contain at least ${AUTH_VALIDATION_SETS.PASSWORD_LENGTH} characters, one uppercase, one number and one special case character`
+      PASSWORD_MATCH_STRING,
+      `Password must contain at least ${PASSWORD_LENGTH} characters, one uppercase, one number and one special case character`
     ),
 });
 
@@ -93,20 +93,57 @@ const SignUpForm = () => {
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="firstName" fullWidth label="First name" placeholder="First name" variant="outlined" />
+                    <Field component={TextField}
+                           name="firstName"
+                           inputProps={{
+                             "data-testid": "firstName",
+                           }}
+                           fullWidth label="First name"
+                           placeholder="First name"
+                           variant="outlined"
+                    />
                   </Grid>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="lastName" fullWidth label="Last name" placeholder="Last name" variant="outlined" />
+                    <Field component={TextField}
+                           name="lastName"
+                           inputProps={{
+                             "data-testid": "firstName",
+                           }}
+                           fullWidth
+                           label="Last name"
+                           placeholder="Last name"
+                           variant="outlined"
+                    />
                   </Grid>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="email" type="email" fullWidth label="Email" placeholder="email@mail.com" variant="outlined" />
+                    <Field component={TextField}
+                           name="email"
+                           inputProps={{
+                             "data-testid": "firstName",
+                           }}
+                           type="email"
+                           fullWidth
+                           label="Email"
+                           placeholder="email@mail.com"
+                           variant="outlined"
+                    />
                   </Grid>
                   <Grid item xs={12}>
-                    <Field component={TextField} name="password" type="password" fullWidth label="Password" placeholder="Password" variant="outlined" />
+                    <Field component={TextField}
+                           name="password"
+                           inputProps={{
+                             "data-testid": "firstName",
+                           }}
+                           type="password"
+                           fullWidth
+                           label="Password"
+                           placeholder="Password"
+                           variant="outlined"
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <Button
-                      aria-label="submit"
+                      data-testid="submit"
                       type="submit"
                       fullWidth
                       variant="contained"
