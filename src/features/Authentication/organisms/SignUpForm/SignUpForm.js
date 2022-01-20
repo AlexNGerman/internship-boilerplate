@@ -3,15 +3,11 @@ import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { TextField } from 'formik-mui';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import SubmitButton from 'features/Authentication/molecules/SubmitButton';
-import Typography from '@mui/material/Typography';
+import { Box, Grid, Typography, Alert, AlertTitle } from '@mui/material';
 import { useMutation } from 'urql';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+import SubmitButton from 'features/Authentication/molecules/SubmitButton';
 import { CREATE_USER } from 'mutations/CreateUser/createUser';
-import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_MATCH_STRING  } from 'constants/auth';
+import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
 import { ROUTES } from 'constants/routes';
 
 
@@ -30,7 +26,7 @@ const SIGNUP_SCHEMA = Yup.object().shape({
   password: Yup.string()
     .required("Please enter your password")
     .matches(
-      PASSWORD_MATCH_STRING,
+      PASSWORD_REGEX,
       `Password must contain at least ${PASSWORD_LENGTH} characters, one uppercase, one number and one special case character`
     ),
 });

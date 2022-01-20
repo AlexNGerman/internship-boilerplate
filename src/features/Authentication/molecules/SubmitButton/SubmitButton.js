@@ -1,6 +1,6 @@
 import { Button, CircularProgress } from '@mui/material';
 
-const SubmitButton = ({children, loading }) => (
+const SubmitButton = ({ children, loading }) => (
   <Button
     data-testid="submit"
     type="submit"
