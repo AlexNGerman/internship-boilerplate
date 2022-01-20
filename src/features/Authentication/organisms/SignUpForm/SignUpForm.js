@@ -39,7 +39,6 @@ const INITIAL_VALUES = {
   lastName: '',
   email: '',
   password: '',
-  passwordConfirmation: '',
 }
 
 const SignUpForm = () => {
@@ -114,7 +113,7 @@ const SignUpForm = () => {
                       sx={{ mt: 3, mb: 2 }}
                       disabled={isSubmitting}
                     >
-                      {fetching ? <CircularProgress color="inherit" /> : "Sign In"}
+                      {fetching ? <CircularProgress color="inherit" /> : "Sign Up"}
                     </Button>
                   </Grid>
                 </Grid>

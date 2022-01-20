@@ -18,7 +18,7 @@ describe('SignUp Formik form tests', () => {
       password: SIGNUP_FIELDS.PASSWORD,
     };
 
-    //{"data":{"createUser":{"id":"48","__typename":"User"}}} 
+    //{"data":{"createUser":{"id":"48","__typename":"User"}}}
     const mockClient = {
       createUser: jest.fn(() => never),
     };
