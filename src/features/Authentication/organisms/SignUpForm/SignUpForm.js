@@ -13,16 +13,16 @@ import { ROUTES } from 'constants/routes';
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
-    .min(MIN_LENGTH, `First name can't be less then ${MIN_LENGTH} letters`)
-    .max(MAX_LENGTH, `First name should be less then ${MIN_LENGTH} letters`)
-    .required('Required'),
+    .min(MIN_LENGTH, `First name can't be less than ${MIN_LENGTH} characters`)
+    .max(MAX_LENGTH, `First name can't be longer than ${MAX_LENGTH} characters`)
+    .required('Please enter your first name'),
   lastName: Yup.string()
-    .min(MIN_LENGTH, `First name can't be less then ${MIN_LENGTH} letters`)
-    .max(MAX_LENGTH, `First name should be less then ${MIN_LENGTH} letters`)
-    .required('Required'),
+    .min(MIN_LENGTH, `Last name can't be less than ${MIN_LENGTH} characters`)
+    .max(MAX_LENGTH, `Last name can't be longer than ${MAX_LENGTH} characters`)
+    .required('Please enter your last name'),
   email: Yup.string()
     .email('Invalid email')
-    .required('Required'),
+    .required('Please enter your email'),
   password: Yup.string()
     .required("Please enter your password")
     .matches(
