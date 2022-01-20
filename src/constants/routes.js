@@ -1,4 +1,4 @@
-export const APP_ROUTES = {
+export const ROUTES = {
   HOME: '/',
   SIGNIN: '/sign-in',
   SIGNUP: '/sign-up'

@@ -1,17 +1,18 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { TextField } from 'formik-mui';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
+import SubmitButton from 'features/Authentication/molecules/SubmitButton';
 import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useMutation } from 'urql';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { CREATE_USER } from 'mutations/CreateUser/createUser';
 import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_MATCH_STRING  } from 'constants/auth';
+import { ROUTES } from 'constants/routes';
 
 
 const SIGNUP_SCHEMA = Yup.object().shape({
@@ -42,11 +43,13 @@ const INITIAL_VALUES = {
 }
 
 const SignUpForm = () => {
-  const [{ fetching, error, data }, createUser] = useMutation(CREATE_USER);
-  const success = data && data.createUser !== null;
+  const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
+  const navigate = useNavigate();
+
   const onSubmit = async (values, { setSubmitting }) => {
-    await createUser(values);
+    const result = await createUser(values);
     setSubmitting(false);
+    if(!result.error) navigate(ROUTES.SIGNIN);
   }
 
   return (
@@ -56,7 +59,7 @@ const SignUpForm = () => {
         validationSchema={SIGNUP_SCHEMA}
         onSubmit={onSubmit}
       >
-        {({ isSubmitting }) => (
+        {() => (
           <Grid item xs={12} sm={8} md={5}>
             <Box
               sx={{
@@ -71,16 +74,6 @@ const SignUpForm = () => {
                 Sign Up
               </Typography>
 
-              {success &&
-                <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
-                  <Grid item xs={12}>
-                    <Alert severity="success" align='left'>
-                      <AlertTitle>Success</AlertTitle>
-                      User was registered
-                    </Alert>
-                  </Grid>
-                </Grid>
-              }
               {error &&
                 <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
                   <Grid item xs={12}>
@@ -143,16 +136,7 @@ const SignUpForm = () => {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <Button
-                      data-testid="submit"
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2 }}
-                      disabled={isSubmitting}
-                    >
-                      {fetching ? <CircularProgress color="inherit" /> : "Sign Up"}
-                    </Button>
+                    <SubmitButton data-testid="submit" loading={fetching}>Sign Up</SubmitButton>
                   </Grid>
                 </Grid>
               </Form>
