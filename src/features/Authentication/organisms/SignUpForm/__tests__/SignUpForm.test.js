@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'urql';
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
 
+jest.setTimeout(50000)
 describe('SignUp Formik form', () => {
   const mockClient = {
     executeMutation: jest.fn(),
