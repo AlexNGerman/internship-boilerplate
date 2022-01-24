@@ -2,17 +2,11 @@ import React from 'react';
 import {render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'urql';
-import { never } from 'wonka';
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
 
-jest.setTimeout(50000)
 describe('SignUp Formik form', () => {
-  const dispatch = jest.fn();
-
   const mockClient = {
-    executeQuery: jest.fn(() => never),
-    executeMutation: jest.fn(() => never),
-    executeSubscription: jest.fn(() => never),
+    executeMutation: jest.fn(),
   };
 
   const renderComponent = () => render(
@@ -21,21 +15,23 @@ describe('SignUp Formik form', () => {
     </Provider>
   );
 
-  // describe('with valid data', () => {
-  //   it('dispatch SignUp with correct params', async () => {
-  //     renderComponent();
-  //
-  //     userEvent.type(screen.getByTestId('firstName'), 'John')
-  //     userEvent.type(screen.getByTestId('lastName'), 'Dee')
-  //     userEvent.type(screen.getByTestId('email'), 'john.dee@someemail.com')
-  //     userEvent.type(screen.getByTestId('password'), 'Alex_12345')
-  //     userEvent.click(screen.getByTestId('submit'))
-  //
-  //     await waitFor(() => {
-  //       expect(mockClient.executeMutation).toBeCalledWith({ "data" : "createUser"})
-  //     });
-  //   });
-  // })
+  describe('with valid data', () => {
+    it('dispatch SignUp with correct params', async () => {
+      renderComponent();
+
+      userEvent.type(screen.getByTestId('firstName'), 'John')
+      userEvent.type(screen.getByTestId('lastName'), 'Dee')
+      userEvent.type(screen.getByTestId('email'), 'john.dee@someemail.com')
+      userEvent.type(screen.getByTestId('password'), 'Alex_12345')
+      userEvent.click(screen.getByTestId('submit'))
+
+      const variables = {firstName:'John', lastName: 'Dee', email: 'john.dee@someemail.com', password: 'Alex_12345' }
+
+      await waitFor(() => {
+        expect(mockClient.executeMutation).toBeCalledWith(expect.objectContaining({ variables }), {})
+      });
+    });
+  })
 
   describe('with invalid data', () => {
     describe('with empty fields' , () => {
