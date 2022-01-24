@@ -3,6 +3,7 @@ import {render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'urql';
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
+import { server, signUpError } from 'utils/tests';
 
 jest.setTimeout(50000)
 describe('SignUp Formik form', () => {
@@ -116,6 +117,23 @@ describe('SignUp Formik form', () => {
         });
         await waitFor(() => {
           expect(screen.getByText(`Last name can't be longer than 50 characters`)).toBeInTheDocument()
+        });
+      });
+    })
+
+    describe('with failed request', () => {
+      it('render server error', async () => {
+        server.use(signUpError);
+        renderComponent();
+
+        userEvent.type(screen.getByTestId('firstName'), 'John')
+        userEvent.type(screen.getByTestId('lastName'), 'Dee')
+        userEvent.type(screen.getByTestId('email'), 'john.dee@someemail.com')
+        userEvent.type(screen.getByTestId('password'), 'Alex_12345')
+        userEvent.click(screen.getByTestId('submit'))
+
+        await waitFor(() => {
+          expect(screen.getByText('Email has already been taken')).toBeInTheDocument()
         });
       });
     })
