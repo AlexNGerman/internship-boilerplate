@@ -1,9 +1,9 @@
 import { graphql } from 'msw';
-import * as responses from 'utils/tests/responces';
+import * as responses from 'utils/tests/responses';
 
 export const signUpError = graphql.mutation('CreateUser', (_, res, ctx) => {
   return res(
-    ctx.data(responses.signUpError),
+    ctx.errors(responses.signUpError),
   )
 });
 

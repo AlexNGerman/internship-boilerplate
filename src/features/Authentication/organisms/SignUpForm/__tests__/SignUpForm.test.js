@@ -20,11 +20,9 @@ describe('SignUp Formik form', () => {
 
   const navigate = jest.fn();
 
-  useNavigate.mockReturnValue(navigate);
-
   describe('with valid data', () => {
     it('dispatch SignUp with correct params', async () => {
-
+      useNavigate.mockReturnValue(navigate);
       renderComponent();
 
       userEvent.type(screen.getByTestId('firstName'), 'John')
@@ -127,7 +125,7 @@ describe('SignUp Formik form', () => {
     })
 
     describe('with failed request', () => {
-      fit('render server error', async () => {
+      it('render server error', async () => {
         server.use(signUpError);
 
         renderComponent();
@@ -139,7 +137,7 @@ describe('SignUp Formik form', () => {
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
-          expect(screen.getByText('Email has already been taken')).toBeInTheDocument()
+          expect(screen.getByText('[GraphQL] Email has already been taken')).toBeInTheDocument()
         });
       });
     })
