@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
@@ -39,7 +39,7 @@ const INITIAL_VALUES = {
 }
 
 const SignUpForm = () => {
-  const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
+  const [{ fetching, data }, createUser] = useMutation(CREATE_USER);
   const navigate = useNavigate();
 
   const onSubmit = async (values, { setSubmitting }) => {
@@ -70,12 +70,12 @@ const SignUpForm = () => {
                 Sign Up
               </Typography>
 
-              {error &&
+              {data?.errors[0].message &&
                 <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
                   <Grid item xs={12}>
                     <Alert severity="error" align='left'>
                       <AlertTitle>Error</AlertTitle>
-                      {error.message}
+                      {data.errors[0].message}
                     </Alert>
                   </Grid>
                 </Grid>

@@ -10,29 +10,9 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-
-jest.mock('react-router-dom', () => {
-  // Require the original module to not be mocked...
-  const originalModule = jest.requireActual('react-router-dom');
-
-  return {
-    __esModule: true,
-    ...originalModule,
-    useParams: jest.fn(),
-    useHistory: jest.fn(),
-    useNavigate: jest.fn(),
-  };
-});
-
-jest.mock('urql', () => {
-  // Require the original module to not be mocked...
-  const originalModule = jest.requireActual('urql');
-
-  return {
-    __esModule: true,
-    ...originalModule,
-    executeQuery: jest.fn(),
-    executeMutation: jest.fn(),
-    executeSubscription: jest.fn(),
-  };
-});
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+  useHistory: jest.fn(),
+  useNavigate: jest.fn(),
+}));

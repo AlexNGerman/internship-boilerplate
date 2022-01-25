@@ -1,24 +1,30 @@
 import React from 'react';
 import {render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Provider } from 'urql';
+import { createClient, Provider } from 'urql';
+import { useNavigate } from 'react-router-dom';
+
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
 import { server, signUpError } from 'utils/tests';
+import { API_URL } from 'constants/api';
+import { ROUTES } from 'constants/routes';
 
-jest.setTimeout(50000)
 describe('SignUp Formik form', () => {
-  const mockClient = {
-    executeMutation: jest.fn(),
-  };
+  const client = createClient({ url: API_URL });
 
   const renderComponent = () => render(
-    <Provider value={mockClient}>
+    <Provider value={client}>
       <SignUpForm />
     </Provider>
   );
 
+  const navigate = jest.fn();
+
+  useNavigate.mockReturnValue(navigate);
+
   describe('with valid data', () => {
     it('dispatch SignUp with correct params', async () => {
+
       renderComponent();
 
       userEvent.type(screen.getByTestId('firstName'), 'John')
@@ -27,10 +33,9 @@ describe('SignUp Formik form', () => {
       userEvent.type(screen.getByTestId('password'), 'Alex_12345')
       userEvent.click(screen.getByTestId('submit'))
 
-      const variables = {firstName:'John', lastName: 'Dee', email: 'john.dee@someemail.com', password: 'Alex_12345' }
-
       await waitFor(() => {
-        expect(mockClient.executeMutation).toBeCalledWith(expect.objectContaining({ variables }), {})
+        expect(navigate).toBeCalledTimes(1);
+        expect(navigate).toBeCalledWith(ROUTES.SIGNIN);
       });
     });
   })
@@ -122,8 +127,9 @@ describe('SignUp Formik form', () => {
     })
 
     describe('with failed request', () => {
-      it('render server error', async () => {
+      fit('render server error', async () => {
         server.use(signUpError);
+
         renderComponent();
 
         userEvent.type(screen.getByTestId('firstName'), 'John')
