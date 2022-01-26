@@ -21,7 +21,7 @@ describe('SignUp Formik form', () => {
   const navigate = jest.fn();
 
   describe('with valid data', () => {
-    it('dispatch SignUp with correct params', async () => {
+    it('calls navigate with correct params', async () => {
       useNavigate.mockReturnValue(navigate);
       renderComponent();
 
@@ -90,7 +90,7 @@ describe('SignUp Formik form', () => {
       });
     })
 
-    describe('with invalid field text MIN length' , () => {
+    describe('with too short first name and last name' , () => {
       it('render correct errors', async () => {
         renderComponent();
 
@@ -107,7 +107,7 @@ describe('SignUp Formik form', () => {
       });
     })
 
-    describe('with invalid field text MAX length' , () => {
+    describe('with too long first name and last name' , () => {
       it('render correct errors', async () => {
         renderComponent();
 
