@@ -1,29 +1,23 @@
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createClient, Provider } from 'urql';
+import renderComponent from 'utils/tests/renderComponent';
 import { useNavigate } from 'react-router-dom';
 
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
 import { server, signUpError } from 'utils/tests';
-import { API_URL } from 'constants/api';
 import { ROUTES } from 'constants/routes';
 
 describe('SignUp Formik form', () => {
-  const client = createClient({ url: API_URL });
 
-  const renderComponent = () => render(
-    <Provider value={client}>
-      <SignUpForm />
-    </Provider>
-  );
+  const render = () => renderComponent(<SignUpForm />);
 
   const navigate = jest.fn();
 
   describe('with valid data', () => {
     it('calls navigate with correct params', async () => {
       useNavigate.mockReturnValue(navigate);
-      renderComponent();
+      render();
 
       userEvent.type(screen.getByTestId('firstName'), 'John')
       userEvent.type(screen.getByTestId('lastName'), 'Dee')
@@ -41,7 +35,7 @@ describe('SignUp Formik form', () => {
   describe('with invalid data', () => {
     describe('with empty fields' , () => {
       it('render correct errors', async () => {
-        renderComponent();
+        render();
 
         userEvent.type(screen.getByTestId('firstName'), '')
         userEvent.type(screen.getByTestId('lastName'), '')
@@ -66,7 +60,7 @@ describe('SignUp Formik form', () => {
 
     describe('with invalid email' , () => {
       it('render correct errors', async () => {
-        renderComponent();
+        render();
 
         userEvent.type(screen.getByTestId('email'), 'email')
         userEvent.click(screen.getByTestId('submit'))
@@ -79,7 +73,7 @@ describe('SignUp Formik form', () => {
 
     describe('with invalid password' , () => {
       it('render correct errors', async () => {
-        renderComponent();
+        render();
 
         userEvent.type(screen.getByTestId('password'), 'password')
         userEvent.click(screen.getByTestId('submit'))
@@ -92,7 +86,7 @@ describe('SignUp Formik form', () => {
 
     describe('with too short first name and last name' , () => {
       it('render correct errors', async () => {
-        renderComponent();
+        render();
 
         userEvent.type(screen.getByTestId('firstName'), 'd')
         userEvent.type(screen.getByTestId('lastName'), 'd')
@@ -109,7 +103,7 @@ describe('SignUp Formik form', () => {
 
     describe('with too long first name and last name' , () => {
       it('render correct errors', async () => {
-        renderComponent();
+        render();
 
         userEvent.type(screen.getByTestId('firstName'), 'firstNamefirstNamefirstNamefirstNamefirstNamefirstName')
         userEvent.type(screen.getByTestId('lastName'), 'lastNamelastNamelastNamelastNamelastNamelastNamelastName')
@@ -128,7 +122,7 @@ describe('SignUp Formik form', () => {
       it('render server error', async () => {
         server.use(signUpError);
 
-        renderComponent();
+        render();
 
         userEvent.type(screen.getByTestId('firstName'), 'John')
         userEvent.type(screen.getByTestId('lastName'), 'Dee')
