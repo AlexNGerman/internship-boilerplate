@@ -75,7 +75,7 @@ const App = () => {
               }
               return null;
             }
-;
+
             logOut();
 
             return null;
