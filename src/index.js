@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createClient, Provider } from 'urql';
-import { API_URL } from 'constants/api';
 import reportWebVitals from 'reportWebVitals';
-import Router from 'router';
-
-const client = createClient({ url: API_URL });
+import App from 'App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider value={client}>
-      <Router />
-    </Provider>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

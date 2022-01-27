@@ -10,6 +10,7 @@ import FormTemplate from 'features/Authentication/templates/FormTemplate';
 import { SIGNIN_USER } from 'mutations/SignInUser/signInUser';
 import { PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
 import { ROUTES } from 'constants/routes';
+import { setToken } from 'utils/auth/cookies';
 
 const SIGNIN_SCHEMA = Yup.object().shape({
   email: Yup.string()
@@ -34,6 +35,9 @@ const SignInForm = () => {
 
   const onSubmit = async (values, { setSubmitting }) => {
     const result = await signInUser(values);
+    const token = result.data.signInUser.token;
+
+    if(token) setToken(token);
     setSubmitting(false);
     if(!result.error) navigate(ROUTES.HOME);
   }
