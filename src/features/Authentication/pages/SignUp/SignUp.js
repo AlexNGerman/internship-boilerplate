@@ -1,5 +1,5 @@
 import React  from 'react';
-import MainTemplate from "components/templates/MainTemplate";
+import MainTemplate from 'components/templates/MainTemplate';
 import SignUpForm from 'features/Authentication/organisms/SignUpForm';
 
 const SignUp = () => {
