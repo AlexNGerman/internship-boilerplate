@@ -3,9 +3,10 @@ import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
-import { Box, Grid, Typography, Alert, AlertTitle } from '@mui/material';
+import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
 import { useMutation } from 'urql';
 import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import FormTemplate from 'features/Authentication/templates/FormTemplate';
 import { CREATE_USER } from 'mutations/CreateUser/createUser';
 import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
 import { ROUTES } from 'constants/routes';
@@ -56,88 +57,78 @@ const SignUpForm = () => {
         onSubmit={onSubmit}
       >
         {() => (
-          <Grid item xs={12} sm={8} md={5}>
-            <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Typography variant="h3" component="div" gutterBottom align="center">
-                Sign Up
-              </Typography>
+          <FormTemplate>
+            <Typography variant="h3" component="div" gutterBottom align="center">
+              Sign Up
+            </Typography>
 
-              {errorMessage &&
-                <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
-                  <Grid item xs={12}>
-                    <Alert severity="error" align='left'>
-                      <AlertTitle>Error</AlertTitle>
-                      {errorMessage}
-                    </Alert>
-                  </Grid>
+            {errorMessage &&
+              <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+                <Grid item xs={12}>
+                  <Alert severity="error" align='left'>
+                    <AlertTitle>Error</AlertTitle>
+                    {errorMessage}
+                  </Alert>
                 </Grid>
-              }
-              <Form>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <Field component={TextField}
-                           name="firstName"
-                           inputProps={{
-                             "data-testid": "firstName",
-                           }}
-                           fullWidth label="First name"
-                           placeholder="First name"
-                           variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field component={TextField}
-                           name="lastName"
-                           inputProps={{
-                             "data-testid": "lastName",
-                           }}
-                           fullWidth
-                           label="Last name"
-                           placeholder="Last name"
-                           variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field component={TextField}
-                           name="email"
-                           inputProps={{
-                             "data-testid": "email",
-                           }}
-                           type="email"
-                           fullWidth
-                           label="Email"
-                           placeholder="email@mail.com"
-                           variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field component={TextField}
-                           name="password"
-                           inputProps={{
-                             "data-testid": "password",
-                           }}
-                           type="password"
-                           fullWidth
-                           label="Password"
-                           placeholder="Password"
-                           variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <SubmitButton data-testid="submit" loading={fetching}>Sign Up</SubmitButton>
-                  </Grid>
+              </Grid>
+            }
+            <Form>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Field component={TextField}
+                         name="firstName"
+                         inputProps={{
+                           "data-testid": "firstName",
+                         }}
+                         fullWidth label="First name"
+                         placeholder="First name"
+                         variant="outlined"
+                  />
                 </Grid>
-              </Form>
-            </Box>
-          </Grid>
+                <Grid item xs={12}>
+                  <Field component={TextField}
+                         name="lastName"
+                         inputProps={{
+                           "data-testid": "lastName",
+                         }}
+                         fullWidth
+                         label="Last name"
+                         placeholder="Last name"
+                         variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field component={TextField}
+                         name="email"
+                         inputProps={{
+                           "data-testid": "email",
+                         }}
+                         type="email"
+                         fullWidth
+                         label="Email"
+                         placeholder="email@mail.com"
+                         variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field component={TextField}
+                         name="password"
+                         inputProps={{
+                           "data-testid": "password",
+                         }}
+                         type="password"
+                         fullWidth
+                         label="Password"
+                         placeholder="Password"
+                         variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <SubmitButton data-testid="submit" loading={fetching}>Sign Up</SubmitButton>
+                </Grid>
+              </Grid>
+            </Form>
+          </FormTemplate>
         )}
       </Formik>
     </div>
