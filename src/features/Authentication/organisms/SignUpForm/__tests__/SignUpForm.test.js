@@ -9,9 +9,7 @@ import { server, signUpError } from 'utils/tests';
 import { ROUTES } from 'constants/routes';
 
 describe('SignUp Formik form', () => {
-
   const render = () => renderComponent(<SignUpForm />);
-
   const navigate = jest.fn();
 
   describe('with valid data', () => {

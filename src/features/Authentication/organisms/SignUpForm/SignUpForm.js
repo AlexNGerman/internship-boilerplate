@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from "yup";
+import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
 import { Box, Grid, Typography, Alert, AlertTitle } from '@mui/material';
 import { useMutation } from 'urql';
@@ -9,7 +9,6 @@ import SubmitButton from 'features/Authentication/molecules/SubmitButton';
 import { CREATE_USER } from 'mutations/CreateUser/createUser';
 import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
 import { ROUTES } from 'constants/routes';
-
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
