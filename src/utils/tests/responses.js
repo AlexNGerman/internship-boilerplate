@@ -6,13 +6,8 @@ export const createUser = {
   },
 };
 export const signInUser = {
-  data:{
-    signInUser: {
-      token: "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNjQzMzc5MDg1fQ.7TOXsA6IgC7vyjWixUgTYRm9wPNU40oDC_nehDXFPt0",
-      user: {
-        id: "13"
-      }
-    }
+  signInUser: {
+    token: "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNjQzMzc5MDg1fQ.7TOXsA6IgC7vyjWixUgTYRm9wPNU40oDC_nehDXFPt0",
   }
 };
 export const signUpError = [
@@ -22,6 +17,6 @@ export const signUpError = [
 ];
 export const signInError = [
   {
-    message: "Неправильный емейл. Ну или пароль...",
+    message: "Wrong email or password",
   },
 ];

@@ -15,12 +15,11 @@ import { ROUTES } from 'constants/routes';
 
 const App = () => {
   const token = getToken();
-  const logOut = () => {
-    removeToken();
-    return <Navigate to={ROUTES.SIGNIN} replace />;
-  }
-  console.log(token);
   const client = useMemo(() => {
+    const logOut = () => {
+      removeToken();
+      return <Navigate to={ROUTES.SIGNIN} replace />;
+    }
     return createClient({
       url: API_URL,
       exchanges: [
@@ -98,7 +97,6 @@ const App = () => {
             }/>
             <Route exact path={ROUTES.SIGNIN} element={<SignIn/>} />
             <Route exact path={ROUTES.SIGNUP} element={<SignUp/>} />
-
             <Route path="*" element={<SignUp/>} />
           </Routes>
         </BrowserRouter>

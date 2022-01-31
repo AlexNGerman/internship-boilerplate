@@ -21,7 +21,7 @@ export const requestHandlers = [
   }),
   graphql.mutation('SignInUser', (_, res, ctx) => {
     return res(
-      ctx.data(responses.signInError),
+      ctx.data(responses.signInUser),
     )
   })
 ];

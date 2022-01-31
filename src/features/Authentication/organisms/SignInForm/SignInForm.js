@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from "yup";
+import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
 import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
 import { useMutation } from 'urql';
@@ -17,7 +17,7 @@ const SIGNIN_SCHEMA = Yup.object().shape({
     .email('Invalid email')
     .required('Please enter your email'),
   password: Yup.string()
-    .required("Please enter your password")
+    .required('Please enter your password')
     .matches(
       PASSWORD_REGEX,
       `Password must contain at least ${PASSWORD_LENGTH} characters, one uppercase, one number and one special case character`
@@ -36,7 +36,6 @@ const SignInForm = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     const result = await signInUser(values);
     const token = result.data.signInUser.token;
-
     if(token) setToken(token);
     setSubmitting(false);
     if(!result.error) navigate(ROUTES.HOME);

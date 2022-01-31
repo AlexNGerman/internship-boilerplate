@@ -8,12 +8,12 @@ import SignInForm from 'features/Authentication/organisms/SignInForm';
 import { server, signInError } from 'utils/tests';
 import { ROUTES } from 'constants/routes';
 
-describe('SignIn Formik form', () => {
+describe('SignIn', () => {
   const render = () => renderComponent(<SignInForm />);
   const navigate = jest.fn();
 
   describe('with valid data', () => {
-    it('calls navigate with correct params', async () => {
+    it('calls navigate() with correct params', async () => {
       useNavigate.mockReturnValue(navigate);
       render();
 
@@ -30,7 +30,7 @@ describe('SignIn Formik form', () => {
 
   describe('with invalid data', () => {
     describe('with empty fields' , () => {
-      it('render correct errors', async () => {
+      it('renders correct errors', async () => {
         render();
 
         userEvent.type(screen.getByTestId('email'), '')
@@ -47,7 +47,7 @@ describe('SignIn Formik form', () => {
     })
 
     describe('with invalid email' , () => {
-      it('render correct errors', async () => {
+      it('renders correct errors', async () => {
         render();
 
         userEvent.type(screen.getByTestId('email'), 'email')
@@ -60,7 +60,7 @@ describe('SignIn Formik form', () => {
     })
 
     describe('with invalid password' , () => {
-      it('render correct errors', async () => {
+      it('renders correct errors', async () => {
         render();
 
         userEvent.type(screen.getByTestId('password'), 'password')
@@ -73,7 +73,7 @@ describe('SignIn Formik form', () => {
     })
 
     describe('with failed request', () => {
-      it('render server error', async () => {
+      it('renders server error', async () => {
         server.use(signInError);
 
         render();
@@ -83,7 +83,7 @@ describe('SignIn Formik form', () => {
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
-          expect(screen.getByText('[GraphQL] Неправильный емейл. Ну или пароль...')).toBeInTheDocument()
+          expect(screen.getByText('[GraphQL] Wrong email or password')).toBeInTheDocument()
         });
       });
     })
