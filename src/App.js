@@ -18,7 +18,7 @@ const App = () => {
   const client = useMemo(() => {
     const logOut = () => {
       removeToken();
-      return <Navigate to={ROUTES.SIGNIN} replace />;
+      document.location.replace(ROUTES.SIGNIN);
     }
     return createClient({
       url: API_URL,
