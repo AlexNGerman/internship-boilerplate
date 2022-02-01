@@ -20,7 +20,7 @@ const AppHeader = () => {
     <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" color="inherit" component="h1" noWrap sx={{ flexGrow: 1 }}>
-          <Link to={ROUTES.HOME} title={'HOME'} style={{color: '#fff'}}>TODO List App</Link>
+          <Link to={ROUTES.HOME} title={ 'HOME' } style={{ color: '#fff' }}>TODO List App</Link>
         </Typography>
 
         { token
@@ -28,8 +28,8 @@ const AppHeader = () => {
             <Button onClick={logOut} variant="contained">Logout</Button>
           :
             <>
-              <Button to={ROUTES.SIGNIN} component={Link} variant="contained" style={{color: '#fff'}} sx={{ mr: 3 }} >Sign In</Button>
-              <Button to={ROUTES.SIGNUP} component={Link} variant="contained">Sign Up</Button>
+              <Button to={ ROUTES.SIGNIN } component={Link} variant="contained" style={{ color: '#fff' }} sx={{ mr: 3 }} >Sign In</Button>
+              <Button to={ ROUTES.SIGNUP } component={Link} variant="contained">Sign Up</Button>
             </>
         }
       </Toolbar>
