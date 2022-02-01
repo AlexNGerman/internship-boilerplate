@@ -3,7 +3,7 @@ import { createClient, Provider, dedupExchange, cacheExchange, fetchExchange, er
 import { authExchange } from '@urql/exchange-auth';
 import { makeOperation } from '@urql/core';
 import { API_URL } from 'constants/api';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import SignIn from 'features/Authentication/pages/SignIn';
 import SignUp from 'features/Authentication/pages/SignUp';
