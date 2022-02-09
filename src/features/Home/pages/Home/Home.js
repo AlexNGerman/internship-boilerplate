@@ -3,6 +3,7 @@ import { useQuery } from 'urql';
 import { Grid, Alert, AlertTitle, CircularProgress } from '@mui/material';
 import MainTemplate from 'components/templates/MainTemplate';
 import Project from 'features/Home/organisms/Project';
+import ProjectModal from 'features/Home/organisms/ProjectModal';
 import { GET_PROJECTS } from 'queries/GetProjects/getProjects';
 
 const Home = () => {
@@ -30,11 +31,12 @@ const Home = () => {
                       ?
                         projects.map(project => {
                           console.log(project);
-                          return <Project project={project} />;
+                          return <Project key={project.createdAt} project={project} />;
                         })
                       :
                         "You don't have any projects yet"
       }
+      <ProjectModal />
     </MainTemplate>
   );
 }

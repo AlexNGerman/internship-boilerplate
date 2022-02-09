@@ -6,7 +6,6 @@ const SubmitButton = ({ children, loading }) => (
     type="submit"
     fullWidth
     variant="contained"
-    sx={{ mt: 3, mb: 2 }}
     disabled={loading}
   >
     {loading ? <CircularProgress color="inherit" /> : children}
