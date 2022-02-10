@@ -30,7 +30,6 @@ const Home = () => {
                     (projects?.length)
                       ?
                         projects.map(project => {
-                          console.log(project);
                           return <Project key={project.createdAt} project={project} />;
                         })
                       :

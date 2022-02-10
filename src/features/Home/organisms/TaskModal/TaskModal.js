@@ -35,12 +35,8 @@ const TaskModal = ({projectId}) => {
     values.projectId = projectId;
     const result = await createTask(values);
     setSubmitting(false);
-    console.log(values)
 
-    console.log(result.error)
-    if(!result.error){
-      //handleClose();
-    }
+    if(!result.error) handleClose();
   }
 
   return (

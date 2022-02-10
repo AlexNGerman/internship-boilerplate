@@ -43,10 +43,7 @@ const ProjectModal = () => {
     const result = await createProject(values);
     setSubmitting(false);
 
-    if(!result.error){
-      console.log('project added');
-      handleClose();
-    }
+    if(!result.error) handleClose();
   }
 
   return (
