@@ -40,7 +40,7 @@ const INITIAL_VALUES = {
 
 const SignUpForm = () => {
   const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
-  const errorMessage = error && error?.message;
+  const errorMessage = error?.message;
   const navigate = useNavigate();
 
   const onSubmit = async (values, { setSubmitting }) => {

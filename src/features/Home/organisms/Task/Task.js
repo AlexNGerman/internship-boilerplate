@@ -11,7 +11,7 @@ const Task = ({ task }) => {
 
   const [{fetching}, deleteTask] = useMutation(DELETE_TASK);
 
-  const onClickDeleteTask = (id) => {
+  const onDeleteTask = (id) => {
     deleteTask({ id: id });
   }
 
@@ -33,14 +33,14 @@ const Task = ({ task }) => {
       <ListItem
         key={task}
         secondaryAction={
-          <IconButton edge="end" aria-label="delete" onClick={() => onClickDeleteTask(id)}>
+          <IconButton edge="end" aria-label="delete" onClick={() => onDeleteTask(id)}>
             <Delete fontSize="inherit" />
           </IconButton>
         }
         disablePadding
         disabled={fetching}
       >
-        <ListItemButton role={undefined} onClick={handleToggle(task)} dense>
+        <ListItemButton onClick={handleToggle(task)} dense>
           <ListItemIcon>
             <Checkbox
               edge="start"

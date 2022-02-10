@@ -37,7 +37,7 @@ const ProjectModal = () => {
   const handleClose = () => setOpen(false);
 
   const [{ fetching, error }, createProject] = useMutation(CREATE_PROJECT);
-  const errorMessage = error && error?.message;
+  const errorMessage = error?.message;
 
   const onSubmit = async (values, { setSubmitting }) => {
     const result = await createProject(values);

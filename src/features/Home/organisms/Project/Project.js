@@ -7,7 +7,7 @@ import TaskModal from 'features/Home/organisms/TaskModal';
 const Project = ({ project }) => {
   const { id, title, tasks } = project;
   return (
-    <Box sx={{ width: '100%', mb: 10, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>
+    <Box sx={{ width: '100%', mb: 5, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>
       <Box sx={{ my: 1 }}>
         <Grid container alignItems="center">
           <Grid item xs>

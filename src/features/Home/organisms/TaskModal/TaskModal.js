@@ -12,7 +12,7 @@ import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
 
 const TASK_SCHEMA = Yup.object().shape({
   content: Yup.string()
-    .min(MIN_LENGTH, `Content be less than ${MIN_LENGTH} characters`)
+    .min(MIN_LENGTH, `Content can't be less than ${MIN_LENGTH} characters`)
     .max(MAX_LENGTH, `Content can't be longer than ${MAX_LENGTH} characters`)
     .required('Please enter your content')
 
@@ -29,10 +29,10 @@ const TaskModal = ({projectId}) => {
   const handleClose = () => setOpen(false);
 
   const [{ fetching, error }, createTask] = useMutation(CREATE_TASK);
-  const errorMessage = error && error?.message;
+  const errorMessage = error?.message;
 
   const onSubmit = async (values, { setSubmitting }) => {
-    values.projectId = projectId;
+    values = {...values, projectId };
     const result = await createTask(values);
     setSubmitting(false);
 
