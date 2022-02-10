@@ -1,25 +1,33 @@
 import React from 'react';
-import Task from 'features/Home/organisms/Task';
+import { Box, Grid, Divider, Typography } from '@mui/material';
+
+import TasksList from 'features/Home/organisms/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
 
 const Project = ({ project }) => {
-  const { id, title, createdAt, deadline, tasks } = project;
+  const { id, title, tasks } = project;
   return (
-    <div>
-      <h1>title - {title} (Project ID - {id})</h1>
-      <p>createdAt - {createdAt}</p>
-      <p>deadline - {deadline}</p>
-      {
-        (tasks?.length)
+    <Box sx={{ width: '100%', mb: 10, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>
+      <Box sx={{ my: 1 }}>
+        <Grid container alignItems="center">
+          <Grid item xs>
+            <Typography gutterBottom variant="h6" component="div">
+              title - {title} (Project ID - {id})
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+      <Divider variant="middle" />
+      <Box sx={{ mb: 2 }}>
+        {(tasks?.length)
           ?
-          tasks.map(task => {
-            return <Task key={task.createdAt} task={task} />;
-          })
+            <TasksList tasks={tasks}/>
           :
-          "You don't have any tasks yet"
-      }
-      <TaskModal projectId={id}/>
-    </div>
+            <p>You don't have any tasks yet</p>
+        }
+        <TaskModal projectId={id}/>
+      </Box>
+    </Box>
   );
 }
 

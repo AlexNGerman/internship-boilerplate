@@ -3,7 +3,7 @@ import { useMutation } from 'urql';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
-import { SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
 
 import { Close, Add } from '@mui/icons-material';
 import SubmitButton from 'features/Authentication/molecules/SubmitButton';
@@ -41,11 +41,13 @@ const TaskModal = ({projectId}) => {
 
   return (
     <div>
-      <SpeedDial
-        ariaLabel="SpeedDial openIcon example"
-        icon={<Add />}
+      <Button
+        variant="outlined"
+        startIcon={<Add />}
         onClick={handleOpen}
-      />
+      >
+        Add Task
+      </Button>
       <Dialog
         fullScreen
         onClose={handleClose}
@@ -98,6 +100,7 @@ const TaskModal = ({projectId}) => {
                                label="Content"
                                placeholder="Content"
                                variant="outlined"
+                               autoFocus
                         />
                       </Grid>
 

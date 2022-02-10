@@ -104,6 +104,7 @@ const ProjectModal = () => {
                                }}
                                fullWidth
                                label="Title"
+                               autoFocus
                                placeholder="Title"
                                variant="outlined"
                         />
@@ -124,11 +125,8 @@ const ProjectModal = () => {
                       <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <Grid item xs={12}>
                           <Field component={MobileDateTimePicker}
-                                 className={'w-100'}
-                                 sx={{ width: '100%' }}
                                  disablePast
                                  value={new Date()}
-                                 fullWidth
                                  showTodayButton
                                  label="Deadline"
                                  name="deadline"
@@ -137,7 +135,7 @@ const ProjectModal = () => {
                                    "data-testid": "deadline",
                                  }}
                                  placeholder="Deadline"
-                                 variant="outlined"
+                                 textField={{ variant: 'outlined', fullWidth: true }}
                           />
                         </Grid>
                       </LocalizationProvider>

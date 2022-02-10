@@ -24,16 +24,15 @@ const Home = () => {
           </Grid>
         </Grid>
       }
-      {
-        fetching ? <CircularProgress color='primary' />
-                 :
-                    (projects?.length)
-                      ?
-                        projects.map(project => {
-                          return <Project key={project.createdAt} project={project} />;
-                        })
-                      :
-                        "You don't have any projects yet"
+      {fetching ? <CircularProgress color='primary' />
+                :
+                  (projects?.length)
+                    ?
+                      projects.map(project => {
+                        return <Project key={project.createdAt} project={project} />;
+                      })
+                    :
+                      <p>You don't have any projects yet</p>
       }
       <ProjectModal />
     </MainTemplate>
