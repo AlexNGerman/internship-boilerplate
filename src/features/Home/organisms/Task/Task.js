@@ -9,10 +9,9 @@ const Task = ({ task }) => {
   const { content, id, done } = task;
   const labelId = `checkbox-list-label-${task}`;
   const [{fetching}, deleteTask] = useMutation(DELETE_TASK);
-  const [{},updateTask] = useMutation(UPDATE_TASK);
+  const [result,updateTask] = useMutation(UPDATE_TASK);
   const onDeleteTask = (id) => {
     deleteTask({ id: id });
-
   }
   const handleToggle = (values) => () => {
     updateTask(values)
@@ -28,7 +27,7 @@ const Task = ({ task }) => {
           </IconButton>
         }
         disablePadding
-        disabled={fetching}
+        disabled={fetching || result.fetching}
       >
         <ListItemButton onClick={ handleToggle({id: id, done: !done }) } dense>
           <ListItemIcon>

@@ -6,7 +6,7 @@ import { TextField } from 'formik-mui';
 import { MobileDateTimePicker } from 'formik-mui-lab';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import { SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
+import { SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button, TextField as TextInput } from '@mui/material';
 import { Close, Add } from '@mui/icons-material';
 import SubmitButton from 'features/Authentication/molecules/SubmitButton';
 import { CREATE_PROJECT } from 'mutations/CreateProject/createProject';
@@ -83,7 +83,7 @@ const ProjectModal = () => {
               validationSchema={SIGNUP_SCHEMA}
               onSubmit={onSubmit}
             >
-              {() => (
+              {(props) => (
                 <>
                   {errorMessage &&
                     <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
@@ -126,14 +126,14 @@ const ProjectModal = () => {
                       <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <Grid item xs={12}>
                           <Field component={MobileDateTimePicker}
+                                 renderInput={props => (<TextInput name="deadline" placeholder="Deadline" {...props} fullWidth  /> )}
                                  disablePast
-                                 value={new Date()}
                                  showTodayButton
+                                 onChange={value => props.setFieldValue("deadline", value)}
                                  label="Deadline"
                                  name="deadline"
-
                                  placeholder="Deadline"
-                                 textField={{ variant: 'outlined', fullWidth: true,"data-testid": "deadline" }}
+                                 textField={{ variant: 'outlined', fullWidth: true }}
                           />
                         </Grid>
                       </LocalizationProvider>
