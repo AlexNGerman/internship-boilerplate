@@ -1,8 +1,6 @@
 export const createUser = {
-  data: {
-    createUser: {
-      id: "48"
-    },
+  createUser: {
+    id: "48"
   },
 };
 export const signInUser = {
@@ -22,11 +20,9 @@ export const signInError = [
 ];
 
 export const createProject = {
-  data: {
-    createProject:{
-      deadline:"2022-02-15T10:36:25.742Z",
-      description:"dwdwdd",
-      title:"sqsqssq"
-    }
-  },
+  createProject:{
+    deadline:"2022-02-15T10:36:25.742Z",
+    description:"Test Project - Description",
+    title:"Test Project - Title"
+  }
 };
