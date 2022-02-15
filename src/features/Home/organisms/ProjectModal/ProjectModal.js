@@ -52,6 +52,7 @@ const ProjectModal = () => {
         ariaLabel="SpeedDial openIcon example"
         sx={{ position: 'fixed', bottom: 16, right: 16 }}
         icon={<Add />}
+        data-testid='openModal'
         onClick={handleOpen}
       />
       <Dialog
@@ -130,12 +131,9 @@ const ProjectModal = () => {
                                  showTodayButton
                                  label="Deadline"
                                  name="deadline"
-                                 inputProps={{
-                                   style: { width: '100%' },
-                                   "data-testid": "deadline",
-                                 }}
+
                                  placeholder="Deadline"
-                                 textField={{ variant: 'outlined', fullWidth: true }}
+                                 textField={{ variant: 'outlined', fullWidth: true,"data-testid": "deadline" }}
                           />
                         </Grid>
                       </LocalizationProvider>

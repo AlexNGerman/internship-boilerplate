@@ -12,7 +12,7 @@ const Project = ({ project }) => {
         <Grid container alignItems="center">
           <Grid item xs>
             <Typography gutterBottom variant="h6" component="div">
-              title - {title} (Project ID - {id})
+              {title} - ({id})
             </Typography>
           </Grid>
         </Grid>

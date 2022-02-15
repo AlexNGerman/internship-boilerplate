@@ -25,11 +25,11 @@ const AppHeader = () => {
 
         { token
           ?
-            <Button onClick={logOut} variant="contained">Logout</Button>
+            <Button onClick={logOut} variant="contained" color="error">Logout</Button>
           :
             <>
-              <Button to={ ROUTES.SIGNIN } component={Link} variant="contained" style={{ color: '#fff' }} sx={{ mr: 3 }} >Sign In</Button>
-              <Button to={ ROUTES.SIGNUP } component={Link} variant="contained">Sign Up</Button>
+              <Button to={ ROUTES.SIGNIN } component={Link} variant="outlined" color="info" style={{ color: '#fff', borderColor: '#fff' }} sx={{ mr: 3 }} >Sign In</Button>
+              <Button to={ ROUTES.SIGNUP } component={Link} variant="contained" color="secondary">Sign Up</Button>
             </>
         }
       </Toolbar>

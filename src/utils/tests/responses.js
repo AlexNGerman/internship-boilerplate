@@ -20,3 +20,13 @@ export const signInError = [
     message: "Wrong email or password",
   },
 ];
+
+export const createProject = {
+  data: {
+    createProject:{
+      deadline:"2022-02-15T10:36:25.742Z",
+      description:"dwdwdd",
+      title:"sqsqssq"
+    }
+  },
+};

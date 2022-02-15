@@ -8,7 +8,7 @@ const SubmitButton = ({ children, loading }) => (
     variant="contained"
     disabled={loading}
   >
-    {loading ? <CircularProgress color="inherit" /> : children}
+    {loading ? <CircularProgress color="inherit" size={25} /> : children}
   </Button>
 );
 
