@@ -3,14 +3,13 @@ import { useMutation } from 'urql';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
-import { MobileDateTimePicker } from 'formik-mui-lab';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import { SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button, TextField as TextInput } from '@mui/material';
+import { SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
 import { Close, Add } from '@mui/icons-material';
 import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import DatePickerField from 'features/Home/atoms/DatePickerField';
 import { CREATE_PROJECT } from 'mutations/CreateProject/createProject';
 import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
+
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   title: Yup.string()
@@ -121,21 +120,20 @@ const ProjectModal = () => {
                                variant="outlined"
                         />
                       </Grid>
-                      <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <Grid item xs={12}>
-                          <Field component={MobileDateTimePicker}
-                                 renderInput={props => (<TextInput name="deadline" placeholder="Deadline" {...props} fullWidth  /> )}
-                                 disablePast
-                                 showTodayButton
-                                 onChange={value => props.setFieldValue("deadline", value)}
-                                 label="Deadline"
-                                 name="deadline"
-                                 placeholder="Deadline"
-                                 textField={{ variant: 'outlined', fullWidth: true }}
-                          />
-                        </Grid>
-                      </LocalizationProvider>
-
+                      <Grid item xs={12}>
+                        <DatePickerField
+                          onChange={value => props.setFieldValue("deadline", value)}
+                          label="Deadline"
+                          name="deadline"
+                          inputProps={{
+                            "data-testid": "deadline",
+                            name: "deadline",
+                            placeholder: "Deadline"
+                          }}
+                          fullWidth
+                          placeholder="Deadline"
+                        />
+                      </Grid>
                       <Grid item xs={12}>
                         <DialogActions sx={{ flex: 1, px: 0, mt: 2 }}>
                           <Button fullWidth variant="outlined" onClick={handleClose}>Cancel</Button>

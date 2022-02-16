@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMutation } from "urql";
-import { ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, IconButton} from '@mui/material';
+import { ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox } from '@mui/material';
 import { UPDATE_TASK } from 'mutations/UpdateTask/updateTask';
 import DeleteTaskButton from 'features/Home/atoms/DeleteTaskButton';
 

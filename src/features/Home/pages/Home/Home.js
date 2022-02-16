@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'urql';
 import { Grid, Alert, AlertTitle, CircularProgress } from '@mui/material';
 import MainTemplate from 'components/templates/MainTemplate';
-import Project from 'features/Home/organisms/Project';
+import Project from 'features/Home/molecules/Project';
 import ProjectModal from 'features/Home/organisms/ProjectModal';
 import { GET_PROJECTS } from 'queries/GetProjects/getProjects';
 

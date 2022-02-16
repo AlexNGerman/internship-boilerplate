@@ -15,7 +15,7 @@ describe('ProjectModal', () => {
       userEvent.click(screen.getByTestId('openModal'))
       userEvent.type(screen.getByTestId('title'), 'Project Title')
       userEvent.type(screen.getByTestId('description'), 'Project Description')
-      userEvent.type(screen.getByPlaceholderText(/Deadline/i), '02/15/2022 12:36 pm')
+      userEvent.type(screen.getByTestId('deadline'), '02/15/2022 12:36 pm')
       userEvent.click(screen.getByTestId('submit'))
 
       await waitFor(() => {
