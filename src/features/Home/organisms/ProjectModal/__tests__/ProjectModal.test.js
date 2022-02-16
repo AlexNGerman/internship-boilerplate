@@ -12,7 +12,7 @@ describe('ProjectModal', () => {
     it('calls handleClose() with correct params', async () => {
       render();
 
-      userEvent.click(screen.getByTestId('openModal'))
+      userEvent.click(screen.getByTestId('open-modal'))
       userEvent.type(screen.getByTestId('title'), 'Project Title')
       userEvent.type(screen.getByTestId('description'), 'Project Description')
       userEvent.type(screen.getByTestId('deadline'), '02/15/2022 12:36 pm')

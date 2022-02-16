@@ -49,7 +49,7 @@ const ProjectModal = () => {
         ariaLabel="SpeedDial openIcon example"
         sx={{ position: 'fixed', bottom: 16, right: 16 }}
         icon={<Add />}
-        data-testid='openModal'
+        data-testid='open-modal'
         onClick={handleOpen}
       />
       <Dialog
