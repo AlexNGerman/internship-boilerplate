@@ -22,7 +22,6 @@ const AppHeader = () => {
         <Typography variant="h6" color="inherit" component="h1" noWrap sx={{ flexGrow: 1 }}>
           <Link to={ROUTES.HOME} title={ 'HOME' } style={{ color: '#fff' }}>TODO List App</Link>
         </Typography>
-
         { token
           ?
             <Button onClick={logOut} variant="contained" color="error">Logout</Button>

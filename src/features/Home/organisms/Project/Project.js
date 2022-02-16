@@ -1,6 +1,6 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import { Box, Grid, Divider, Typography } from '@mui/material';
-
 import TasksList from 'features/Home/organisms/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
 
@@ -12,7 +12,7 @@ const Project = ({ project }) => {
         <Grid container alignItems="center">
           <Grid item xs>
             <Typography gutterBottom variant="h6" component="div">
-              {title} - ({id})
+              <Link to={`/project/${id}`} title={title} style={{ color: '#1976d2' }}>{title} - ({id})</Link>
             </Typography>
           </Grid>
         </Grid>

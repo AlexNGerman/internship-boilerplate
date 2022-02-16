@@ -5,10 +5,11 @@ import { makeOperation } from '@urql/core';
 import { API_URL } from 'constants/api';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
+import PrivateRoute from 'features/Authentication/molecules/PrivateRoute';
 import SignIn from 'features/Authentication/pages/SignIn';
 import SignUp from 'features/Authentication/pages/SignUp';
-import PrivateRoute from 'features/Authentication/molecules/PrivateRoute';
 import Home from 'features/Home/pages/Home';
+import ProjectPage from 'features/Home/pages/ProjectPage';
 import theme from 'utils/theme';
 import { getToken, removeToken } from 'utils/auth/cookies';
 import { ROUTES } from 'constants/routes';
@@ -93,6 +94,11 @@ const App = () => {
             <Route exact path={ROUTES.HOME} element={
               <PrivateRoute>
                 <Home/>
+              </PrivateRoute>
+            }/>
+            <Route exact path={ROUTES.PROJECT} element={
+              <PrivateRoute>
+                <ProjectPage/>
               </PrivateRoute>
             }/>
             <Route exact path={ROUTES.SIGNIN} element={<SignIn/>} />
