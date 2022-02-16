@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderComponent from 'utils/tests/renderComponent';
 import ProjectModal from 'features/Home/organisms/ProjectModal';
 
-describe('Create Project', () => {
+describe('ProjectModal', () => {
   const render = () => renderComponent(<ProjectModal />);
   const handleClose = jest.fn();
 
@@ -17,7 +17,6 @@ describe('Create Project', () => {
       userEvent.type(screen.getByTestId('description'), 'Project Description')
       userEvent.type(screen.getByPlaceholderText(/Deadline/i), '02/15/2022 12:36 pm')
       userEvent.click(screen.getByTestId('submit'))
-
 
       await waitFor(() => {
         expect(handleClose).toBeCalledTimes(1);

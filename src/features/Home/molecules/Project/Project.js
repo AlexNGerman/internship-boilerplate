@@ -19,12 +19,7 @@ const Project = ({ project }) => {
       </Box>
       <Divider variant="middle" />
       <Box sx={{ mb: 2 }}>
-        {(tasks?.length)
-          ?
-            <TasksList tasks={tasks}/>
-          :
-            <p>You don't have any tasks yet</p>
-        }
+        {(tasks?.length) ? <TasksList tasks={tasks}/> : <p>You don't have any tasks yet</p> }
         <TaskModal projectId={id}/>
       </Box>
     </Box>

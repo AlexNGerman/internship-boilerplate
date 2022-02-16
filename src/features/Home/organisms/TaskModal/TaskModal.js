@@ -15,7 +15,6 @@ const TASK_SCHEMA = Yup.object().shape({
     .min(MIN_LENGTH, `Content can't be less than ${MIN_LENGTH} characters`)
     .max(MAX_LENGTH, `Content can't be longer than ${MAX_LENGTH} characters`)
     .required('Please enter your content')
-
 });
 
 const INITIAL_VALUES = {

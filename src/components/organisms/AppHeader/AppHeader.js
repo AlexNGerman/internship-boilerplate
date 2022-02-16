@@ -20,7 +20,7 @@ const AppHeader = () => {
     <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" color="inherit" component="h1" noWrap sx={{ flexGrow: 1 }}>
-          <Link to={ROUTES.HOME} title={ 'HOME' } style={{ color: '#fff' }}>TODO List App</Link>
+          <Link to={ROUTES.HOME} title={ 'HOME' } style={{ color: '#fff' }}>Projects List App</Link>
         </Typography>
         { token
           ?

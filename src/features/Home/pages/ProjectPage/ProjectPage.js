@@ -36,48 +36,46 @@ const ProjectPage = () => {
           </Grid>
         </Grid>
       }
-      {fetching ? <CircularProgress color='primary' />
+      {fetching && <CircularProgress color='primary' />}
+      {(project)
+        ?
+        <>
+          <Box sx={{ width: '100%', mb: 3, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>
+            <Box sx={{ my: 1 }}>
+              <Grid container alignItems="center">
+                <Grid item xs={12}>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {project.title} - {project.deadline}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography gutterBottom variant="p" component="p">
+                    Description: {project.description}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+            <Divider variant="middle" />
+            <Box sx={{ mb: 2 }}>
+              {(project.tasks?.length)
+                ?
+                <TasksList tasks={project.tasks}/>
                 :
-                  (project)
-                    ?
-                      <>
-                        <Box sx={{ width: '100%', mb: 3, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>
-                          <Box sx={{ my: 1 }}>
-                            <Grid container alignItems="center">
-                              <Grid item xs={12}>
-                                <Typography gutterBottom variant="h6" component="div">
-                                  {project.title} - {project.deadline}
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Typography gutterBottom variant="p" component="p">
-                                  Description: {project.description}
-                                </Typography>
-                              </Grid>
-                            </Grid>
-                          </Box>
-                          <Divider variant="middle" />
-                          <Box sx={{ mb: 2 }}>
-                            {(project.tasks?.length)
-                              ?
-                              <TasksList tasks={project.tasks}/>
-                              :
-                              <p>You don't have any tasks yet</p>
-                            }
-                            <TaskModal projectId={id}/>
-                          </Box>
-                        </Box>
-                        <Grid container alignItems="center">
-                          <Grid item xs={12}>
-                            <Button variant="contained" color="error" onClick={() => onDeleteProject(id)} disabled={result.fetching}>
-                              <Delete fontSize="inherit" /> Delete Project
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </>
-                    :
-                      <p>You don't have any projects yet</p>
-      }
+                <p>You don't have any tasks yet</p>
+              }
+              <TaskModal projectId={id}/>
+            </Box>
+          </Box>
+          <Grid container alignItems="center">
+            <Grid item xs={12}>
+              <Button variant="contained" color="error" onClick={() => onDeleteProject(id)} disabled={result.fetching}>
+                <Delete fontSize="inherit" /> Delete Project
+              </Button>
+            </Grid>
+          </Grid>
+        </>
+        :
+        <p>You don't have any projects yet</p>}
     </MainTemplate>
   );
 }
