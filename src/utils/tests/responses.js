@@ -21,7 +21,7 @@ export const signInError = [
 
 export const createProject = {
   createProject:{
-    deadline: "2022-02-15T10:36:25.742Z",
+    deadline: "2022-02-18T12:01:46.000Z",
     description: "Test Project - Description",
     title: "Test Project - Title"
   }

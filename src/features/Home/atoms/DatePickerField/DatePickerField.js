@@ -12,10 +12,9 @@ const DatePickerField = ({ ...props }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <MobileDateTimePicker
-        renderInput={(params) => <TextField {...field} {...{...props, ...params.inputProps}}/>}
+        renderInput={(params) => <TextField {...field} {...props} {...params.inputProps}/>}
         {...field}
         {...props}
-        fullWidth
         disablePast
         showTodayButton
         selected={(field.value && new Date(field.value)) || null}

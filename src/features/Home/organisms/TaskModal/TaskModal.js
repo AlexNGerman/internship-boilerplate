@@ -6,7 +6,7 @@ import { TextField } from 'formik-mui';
 import { Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
 
 import { Close, Add } from '@mui/icons-material';
-import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import SubmitButton from 'components/molecules/SubmitButton';
 import { CREATE_TASK } from 'mutations/CreateTask/createTask';
 import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
 

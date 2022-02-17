@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
 import { SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
 import { Close, Add } from '@mui/icons-material';
-import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import SubmitButton from 'components/molecules/SubmitButton';
 import DatePickerField from 'features/Home/atoms/DatePickerField';
 import { CREATE_PROJECT } from 'mutations/CreateProject/createProject';
 import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
@@ -33,13 +33,17 @@ const INITIAL_VALUES = {
 const ProjectModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    console.log('handleClose');
+    setOpen(false);
+  };
   const [{ fetching, error }, createProject] = useMutation(CREATE_PROJECT);
   const errorMessage = error?.message;
 
   const onSubmit = async (values, { setSubmitting }) => {
     const result = await createProject(values);
     setSubmitting(false);
+
     if(!result.error) handleClose();
   }
 
@@ -57,6 +61,7 @@ const ProjectModal = () => {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        data-testid='project-modal'
       >
         <DialogTitle sx={{ m: 0, p: 2 }}>
           Add Project
@@ -128,7 +133,8 @@ const ProjectModal = () => {
                           inputProps={{
                             "data-testid": "deadline",
                             name: "deadline",
-                            placeholder: "Deadline"
+                            placeholder: "Deadline",
+                            autoComplete: 'off'
                           }}
                           fullWidth
                           placeholder="Deadline"

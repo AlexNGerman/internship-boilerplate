@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
 import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
 import { useMutation } from 'urql';
-import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import SubmitButton from 'components/molecules/SubmitButton';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
 import { SIGNIN_USER } from 'mutations/SignInUser/signInUser';
 import { PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';

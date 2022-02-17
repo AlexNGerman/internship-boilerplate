@@ -18,8 +18,9 @@ describe('ProjectModal', () => {
       userEvent.type(screen.getByTestId('deadline'), '02/15/2022 12:36 pm')
       userEvent.click(screen.getByTestId('submit'))
 
+
       await waitFor(() => {
-        expect(handleClose).toBeCalledTimes(1);
+        expect(screen.queryByTestId('project-modal')).toBeNull();
       });
     });
   })
