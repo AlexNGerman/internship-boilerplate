@@ -20,9 +20,15 @@ export const signInError = [
 ];
 
 export const createProject = {
-  createProject:{
+  createProject: {
     deadline: "2022-02-18T12:01:46.000Z",
-    description: "Test Project - Description",
-    title: "Test Project - Title"
+    description: "Test Project Description",
+    title: "Test Project Title"
+  }
+};
+
+export const createTask = {
+  createTask: {
+    content: "Test Task Description",
   }
 };

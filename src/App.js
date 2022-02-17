@@ -23,6 +23,10 @@ const App = () => {
     }
     return createClient({
       url: API_URL,
+      fetchOptions: () => {
+        const token = getToken()
+        return token ? { headers: { Authorization: `Bearer ${token}` }} : {}
+      },
       exchanges: [
         dedupExchange,
         cacheExchange,

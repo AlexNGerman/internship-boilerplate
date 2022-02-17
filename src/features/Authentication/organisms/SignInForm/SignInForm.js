@@ -35,7 +35,7 @@ const SignInForm = () => {
 
   const onSubmit = async (values, { setSubmitting }) => {
     const result = await signInUser(values);
-    const token = result.data.signInUser.token;
+    const token = result.data?.signInUser.token;
     if(token) setToken(token);
     setSubmitting(false);
     if(!result.error) navigate(ROUTES.HOME);

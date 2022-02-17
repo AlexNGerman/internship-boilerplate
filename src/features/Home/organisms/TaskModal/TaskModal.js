@@ -3,7 +3,7 @@ import { useMutation } from 'urql';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
-import { Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Alert, AlertTitle, Container, Button } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Container, Button } from '@mui/material';
 
 import { Close, Add } from '@mui/icons-material';
 import SubmitButton from 'components/molecules/SubmitButton';
@@ -26,9 +26,7 @@ const TaskModal = ({projectId}) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [{ fetching, error }, createTask] = useMutation(CREATE_TASK);
-  const errorMessage = error?.message;
+  const [{ fetching }, createTask] = useMutation(CREATE_TASK);
 
   const onSubmit = async (values, { setSubmitting }) => {
     values = {...values, projectId };
@@ -41,8 +39,10 @@ const TaskModal = ({projectId}) => {
   return (
     <div>
       <Button
+        aria-label="Open Create Task Modal"
         variant="outlined"
         startIcon={<Add />}
+        data-testid='open-modal'
         onClick={handleOpen}
       >
         Add Task
@@ -50,8 +50,9 @@ const TaskModal = ({projectId}) => {
       <Dialog
         fullScreen
         onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
+        aria-labelledby="task-modal"
         open={open}
+        data-testid='task-modal'
       >
         <DialogTitle sx={{ m: 0, p: 2 }}>
           Add Task - {projectId}
@@ -76,42 +77,30 @@ const TaskModal = ({projectId}) => {
               onSubmit={onSubmit}
             >
               {() => (
-                <>
-                  {errorMessage &&
-                    <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
-                      <Grid item xs={12}>
-                        <Alert severity="error" align='left'>
-                          <AlertTitle>Error</AlertTitle>
-                          {errorMessage}
-                        </Alert>
-                      </Grid>
+                <Form>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <Field component={TextField}
+                             name="content"
+                             inputProps={{
+                               "data-testid": "content",
+                             }}
+                             fullWidth
+                             label="Content"
+                             placeholder="Content"
+                             variant="outlined"
+                             autoFocus
+                      />
                     </Grid>
-                  }
-                  <Form>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12}>
-                        <Field component={TextField}
-                               name="content"
-                               inputProps={{
-                                 "data-testid": "content",
-                               }}
-                               fullWidth
-                               label="Content"
-                               placeholder="Content"
-                               variant="outlined"
-                               autoFocus
-                        />
-                      </Grid>
 
-                      <Grid item xs={12}>
-                        <DialogActions sx={{ flex: 1, px: 0, mt: 2 }}>
-                          <Button fullWidth variant="outlined" onClick={handleClose}>Cancel</Button>
-                          <SubmitButton data-testid="submit" loading={fetching}>Create Task</SubmitButton>
-                        </DialogActions>
-                      </Grid>
+                    <Grid item xs={12}>
+                      <DialogActions sx={{ flex: 1, px: 0, mt: 2 }}>
+                        <Button fullWidth variant="outlined" onClick={handleClose}>Cancel</Button>
+                        <SubmitButton data-testid="submit" loading={fetching}>Create Task</SubmitButton>
+                      </DialogActions>
                     </Grid>
-                  </Form>
-                </>
+                  </Grid>
+                </Form>
               )}
             </Formik>
           </Container>

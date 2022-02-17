@@ -7,7 +7,6 @@ export const CREATE_TASK = gql`
       projectId: $projectId
     ) {
       content
-      projectId
     }
   }
 `;
