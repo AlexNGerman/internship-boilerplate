@@ -42,5 +42,3 @@ workflows:
   main:
     jobs:
       - tests:
-          requires:
-            - linters
