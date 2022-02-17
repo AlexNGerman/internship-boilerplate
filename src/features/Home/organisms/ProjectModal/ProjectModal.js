@@ -34,7 +34,6 @@ const ProjectModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
-    console.log('handleClose');
     setOpen(false);
   };
   const [{ fetching, error }, createProject] = useMutation(CREATE_PROJECT);

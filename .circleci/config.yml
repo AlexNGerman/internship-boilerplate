@@ -1,0 +1,45 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/internship-boilerplate
+    docker:
+      - image: cimg/node:16.13.0
+
+caches:
+  - &yarn_cache /internship-boilerplate-v1-{{ checksum "yarn.lock" }}
+
+commands:
+  defaults:
+    steps:
+      - checkout
+      - restore_cache:
+          key: *yarn_cache
+      - run:
+          name: Installing Dependencies
+          command: yarn install
+      - save_cache:
+          key: *yarn_cache
+          paths:
+            - ./node_modules
+
+  tests:
+    steps:
+      - run:
+          name: Running tests
+          command: yarn test -w 1
+
+jobs:
+  tests:
+    executor: default
+    steps:
+      - defaults
+      - tests
+
+workflows:
+  version: 2.1
+  main:
+    jobs:
+      - tests:
+          requires:
+            - linters
