@@ -17,7 +17,7 @@ describe('TaskModal', () => {
 
       await waitFor(() => {
         expect(screen.queryByTestId('task-modal')).toBeNull();
-      });
+      }, {timeout: 3000});
     });
   })
 
