@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'constants/routes';
 import { getToken, removeToken } from 'utils/auth/cookies';
@@ -20,7 +17,7 @@ const AppHeader = () => {
     <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" color="inherit" component="h1" noWrap sx={{ flexGrow: 1 }}>
-          <Link to={ROUTES.HOME} title={ 'HOME' } style={{ color: '#fff' }}>Projects List App</Link>
+          Projects List App
         </Typography>
         { token
           ?

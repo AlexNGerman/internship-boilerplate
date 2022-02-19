@@ -10,6 +10,7 @@ import SignIn from 'features/Authentication/pages/SignIn';
 import SignUp from 'features/Authentication/pages/SignUp';
 import Home from 'features/Home/pages/Home';
 import ProjectPage from 'features/Home/pages/ProjectPage';
+import ProjectEdit from 'features/Home/pages/ProjectEdit';
 import theme from 'utils/theme';
 import { getToken, removeToken } from 'utils/auth/cookies';
 import { ROUTES } from 'constants/routes';
@@ -103,6 +104,11 @@ const App = () => {
             <Route exact path={ROUTES.PROJECT} element={
               <PrivateRoute>
                 <ProjectPage/>
+              </PrivateRoute>
+            }/>
+            <Route exact path={ROUTES.PROJECT_EDIT} element={
+              <PrivateRoute>
+                <ProjectEdit/>
               </PrivateRoute>
             }/>
             <Route exact path={ROUTES.SIGNIN} element={<SignIn/>} />

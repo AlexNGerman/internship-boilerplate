@@ -1,41 +1,23 @@
 import React from 'react';
-import {useMutation, useQuery} from 'urql';
-import { useParams, useNavigate } from 'react-router-dom'
-import {Grid, Alert, AlertTitle, CircularProgress, Box, Typography, Divider, Button} from '@mui/material';
-import {Delete} from "@mui/icons-material";
+import { useQuery } from 'urql';
+import { useParams } from 'react-router-dom'
+import {Grid, CircularProgress, Box, Typography, Divider } from '@mui/material';
 import MainTemplate from 'components/templates/MainTemplate';
 import { GET_PROJECT } from 'queries/GetProject/getProject';
 import TasksList from 'features/Home/organisms/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
-import {DELETE_PROJECT} from "mutations/DeleteProject/deleteProject";
-import {ROUTES} from "constants/routes";
+import DeleteProjectButton from 'features/Home/atoms/DeleteProjectButton';
+import AppProjectHeader from 'features/Home/organisms/AppProjectHeader';
 
 const ProjectPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const [result, deleteProject] = useMutation(DELETE_PROJECT);
-  const [{ data, fetching, error }] = useQuery({
+  const [{ data, fetching }] = useQuery({
     query: GET_PROJECT,
     variables: { id },
   });
-  const project = data?.project;
-
-  const onDeleteProject = async (id) => {
-    const responce = await deleteProject({ id: id });
-    if(!responce.error) navigate(ROUTES.HOME);
-  }
+  const project = !fetching && data?.project;
   return (
-    <MainTemplate>
-      {error &&
-        <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
-          <Grid item xs={12}>
-            <Alert severity="error" align='left'>
-              <AlertTitle>Error</AlertTitle>
-              {error.message}
-            </Alert>
-          </Grid>
-        </Grid>
-      }
+    <MainTemplate header={<AppProjectHeader project={project} />}>
       {fetching && <CircularProgress color='primary' />}
       {(project)
         ?
@@ -68,14 +50,12 @@ const ProjectPage = () => {
           </Box>
           <Grid container alignItems="center">
             <Grid item xs={12}>
-              <Button variant="contained" color="error" onClick={() => onDeleteProject(id)} disabled={result.fetching}>
-                <Delete fontSize="inherit" /> Delete Project
-              </Button>
+              <DeleteProjectButton id={ id } />
             </Grid>
           </Grid>
         </>
         :
-        <p>You don't have any projects yet</p>}
+        <p>Project not found</p>}
     </MainTemplate>
   );
 }

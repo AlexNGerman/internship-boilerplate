@@ -3,10 +3,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppHeader from 'components/organisms/AppHeader';
 
-const MainTemplate = ({ children }) => (
+const MainTemplate = ({ children, header }) => (
   <Fragment>
     <CssBaseline />
-    <AppHeader />
+    {header ? header : <AppHeader />}
     <main>
       <Container sx={{ py: 6 }} maxWidth="md" align="center">
         {children}

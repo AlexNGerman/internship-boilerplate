@@ -11,7 +11,7 @@ import { CREATE_PROJECT } from 'mutations/CreateProject/createProject';
 import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
 
 
-const SIGNUP_SCHEMA = Yup.object().shape({
+const PROJECT_SCHEMA = Yup.object().shape({
   title: Yup.string()
     .min(MIN_LENGTH, `Title can't be less than ${MIN_LENGTH} characters`)
     .max(MAX_LENGTH, `Title can't be longer than ${MAX_LENGTH} characters`)
@@ -77,7 +77,7 @@ const ProjectModal = () => {
           <Container sx={{ py: 6 }} maxWidth="sm" align="center">
             <Formik
               initialValues={INITIAL_VALUES}
-              validationSchema={SIGNUP_SCHEMA}
+              validationSchema={PROJECT_SCHEMA}
               onSubmit={onSubmit}
             >
               {(props) => (
