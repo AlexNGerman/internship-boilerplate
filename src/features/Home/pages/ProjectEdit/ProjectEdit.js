@@ -53,14 +53,14 @@ const ProjectEdit = () => {
       {project
         ?
         <FormTemplate>
-          <Typography variant="h3" component="div" gutterBottom align="center">
+          <Typography variant='h3' component='div' gutterBottom align='center'>
             Edit Project
           </Typography>
 
           {errorMessage &&
             <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
               <Grid item xs={12}>
-                <Alert severity="error" align='left'>
+                <Alert severity='error' align='left'>
                   <AlertTitle>Error</AlertTitle>
                   {errorMessage}
                 </Alert>
@@ -77,31 +77,31 @@ const ProjectEdit = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <Field component={TextField}
-                           name="title"
+                           name='title'
                            inputProps={{
-                             "data-testid": "title",
+                             'data-testid': 'title',
                            }}
                            fullWidth
-                           label="Title"
-                           placeholder="Title"
-                           variant="outlined"
+                           label='Title'
+                           placeholder='Title'
+                           variant='outlined'
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <Field component={TextField}
-                           name="description"
+                           name='description'
                            inputProps={{
-                             "data-testid": "description",
+                             'data-testid': 'description',
                            }}
-                           type="textarea"
+                           type='textarea'
                            fullWidth
-                           label="Description"
-                           placeholder="Description"
-                           variant="outlined"
+                           label='Description'
+                           placeholder='Description'
+                           variant='outlined'
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <SubmitButton data-testid="submit" loading={fetching}>Update Project</SubmitButton>
+                    <SubmitButton loading={fetching}>Update Project</SubmitButton>
                   </Grid>
                 </Grid>
               </Form>

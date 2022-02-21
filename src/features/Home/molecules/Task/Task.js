@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation } from "urql";
+import { useMutation } from 'urql';
 import {makeStyles} from '@mui/styles';
 import { ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox } from '@mui/material';
 import { UPDATE_TASK } from 'mutations/UpdateTask/updateTask';
@@ -30,7 +30,7 @@ const Task = ({ task }) => {
     ><ListItemButton onClick={ handleToggle } dense>
         <ListItemIcon>
           <Checkbox
-            edge="start"
+            edge='start'
             checked={done}
             tabIndex={-1}
             disableRipple

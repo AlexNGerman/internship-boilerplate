@@ -14,18 +14,18 @@ const AppHeader = () => {
   }
 
   return (
-    <AppBar position="relative">
+    <AppBar position='relative'>
       <Toolbar>
-        <Typography variant="h6" color="inherit" component="h1" noWrap sx={{ flexGrow: 1 }}>
+        <Typography variant='h6' color='inherit' component='h1' noWrap sx={{ flexGrow: 1 }}>
           Projects List App
         </Typography>
         { token
           ?
-            <Button onClick={logOut} variant="contained" color="error">Logout</Button>
+            <Button onClick={logOut} variant='contained' color='error'>Logout</Button>
           :
             <>
-              <Button to={ ROUTES.SIGNIN } component={Link} variant="outlined" color="white" sx={{ mr: 3 }} >Sign In</Button>
-              <Button to={ ROUTES.SIGNUP } component={Link} variant="contained" color="secondary">Sign Up</Button>
+              <Button to={ ROUTES.SIGNIN } component={Link} variant='outlined' color='white' sx={{ mr: 3 }} >Sign In</Button>
+              <Button to={ ROUTES.SIGNUP } component={Link} variant='contained' color='secondary'>Sign Up</Button>
             </>
         }
       </Toolbar>

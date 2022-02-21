@@ -8,7 +8,7 @@ const MainTemplate = ({ children, header = <AppHeader />}) => (
     <CssBaseline />
     { header }
     <main>
-      <Container sx={{ py: 6 }} maxWidth="md" align="center">
+      <Container sx={{ py: 6 }} maxWidth='md' align='center'>
         {children}
       </Container>
     </main>

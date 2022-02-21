@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useMutation } from 'urql';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -45,7 +45,7 @@ const ProjectModal = () => {
   return (
     <div>
       <SpeedDial
-        ariaLabel="Open Create Project Modal"
+        ariaLabel='Open Create Project Modal'
         sx={{ position: 'fixed', bottom: 16, right: 16 }}
         icon={<Add />}
         data-testid='open-modal'
@@ -54,7 +54,7 @@ const ProjectModal = () => {
       <Dialog
         fullScreen
         onClose={handleClose}
-        aria-labelledby="project-modal"
+        aria-labelledby='project-modal'
         open={open}
         data-testid='project-modal'
       >
@@ -62,7 +62,7 @@ const ProjectModal = () => {
           Add Project
 
           <IconButton
-            aria-label="close"
+            aria-label='close'
             onClick={handleClose}
             sx={{
               position: 'absolute',
@@ -74,7 +74,7 @@ const ProjectModal = () => {
           </IconButton>
         </DialogTitle>
         <DialogContent dividers>
-          <Container sx={{ py: 6 }} maxWidth="sm" align="center">
+          <Container sx={{ py: 6 }} maxWidth='sm' align='center'>
             <Formik
               initialValues={INITIAL_VALUES}
               validationSchema={PROJECT_SCHEMA}
@@ -85,49 +85,49 @@ const ProjectModal = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
                       <Field component={TextField}
-                             name="title"
+                             name='title'
                              inputProps={{
-                               "data-testid": "title",
+                               'data-testid': 'title',
                              }}
                              fullWidth
-                             label="Title"
+                             label='Title'
                              autoFocus
-                             placeholder="Title"
-                             variant="outlined"
+                             placeholder='Title'
+                             variant='outlined'
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <Field component={TextField}
-                             name="description"
+                             name='description'
                              inputProps={{
-                               "data-testid": "description",
+                               'data-testid': 'description',
                              }}
-                             type="textarea"
+                             type='textarea'
                              fullWidth
-                             label="Description"
-                             placeholder="Description"
-                             variant="outlined"
+                             label='Description'
+                             placeholder='Description'
+                             variant='outlined'
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <DatePickerField
-                        onChange={value => props.setFieldValue("deadline", value)}
-                        label="Deadline"
-                        name="deadline"
+                        onChange={value => props.setFieldValue('deadline', value)}
+                        label='Deadline'
+                        name='deadline'
                         inputProps={{
-                          "data-testid": "deadline",
-                          name: "deadline",
-                          placeholder: "Deadline",
+                          'data-testid': 'deadline',
+                          name: 'deadline',
+                          placeholder: 'Deadline',
                           autoComplete: 'off'
                         }}
                         fullWidth
-                        placeholder="Deadline"
+                        placeholder='Deadline'
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <DialogActions sx={{ flex: 1, px: 0, mt: 2 }}>
-                        <Button fullWidth variant="outlined" onClick={handleClose}>Cancel</Button>
-                        <SubmitButton data-testid="submit" loading={fetching}>Create Project</SubmitButton>
+                        <Button fullWidth variant='outlined' onClick={handleClose}>Cancel</Button>
+                        <SubmitButton loading={fetching}>Create Project</SubmitButton>
                       </DialogActions>
                     </Grid>
                   </Grid>

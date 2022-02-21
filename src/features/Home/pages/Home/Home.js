@@ -17,7 +17,7 @@ const Home = () => {
       {error &&
         <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
           <Grid item xs={12}>
-            <Alert severity="error" align='left'>
+            <Alert severity='error' align='left'>
               <AlertTitle>Error</AlertTitle>
               {error.message}
             </Alert>

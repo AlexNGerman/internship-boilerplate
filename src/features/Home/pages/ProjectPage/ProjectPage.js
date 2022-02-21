@@ -25,25 +25,25 @@ const ProjectPage = () => {
         <>
           <Box sx={{ width: '100%', mb: 3, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>
             <Box sx={{ my: 1 }}>
-              <Grid container alignItems="center">
+              <Grid container alignItems='center'>
                 <Grid item xs={12}>
-                  <Typography gutterBottom variant="h6" component="div">
+                  <Typography gutterBottom variant='h6' component='div'>
                     {project.title}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography gutterBottom variant="p" component="p">
-                    Deadline: {moment(project.deadline).format("MM/DD/YYYY HH:mm a")}
+                  <Typography gutterBottom variant='p' component='p'>
+                    Deadline: {moment(project.deadline).format('MM/DD/YYYY HH:mm a')}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography gutterBottom variant="p" component="p">
+                  <Typography gutterBottom variant='p' component='p'>
                     Description: {project.description}
                   </Typography>
                 </Grid>
               </Grid>
             </Box>
-            <Divider variant="middle" />
+            <Divider variant='middle' />
             <Box sx={{ mb: 2 }}>
               {(project.tasks?.length)
                 ?
@@ -54,7 +54,7 @@ const ProjectPage = () => {
               <TaskModal projectId={id}/>
             </Box>
           </Box>
-          <Grid container alignItems="center">
+          <Grid container alignItems='center'>
             <Grid item xs={12}>
               <DeleteProjectButton id={ id } />
             </Grid>

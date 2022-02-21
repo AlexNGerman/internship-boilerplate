@@ -113,7 +113,7 @@ const App = () => {
             }/>
             <Route exact path={ROUTES.SIGNIN} element={<SignIn/>} />
             <Route exact path={ROUTES.SIGNUP} element={<SignUp/>} />
-            <Route path="*" element={<SignUp/>} />
+            <Route path='*' element={<SignUp/>} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

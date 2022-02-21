@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useMutation } from 'urql';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -39,8 +39,8 @@ const TaskModal = ({projectId}) => {
   return (
     <div>
       <Button
-        aria-label="Open Create Task Modal"
-        variant="outlined"
+        aria-label='Open Create Task Modal'
+        variant='outlined'
         startIcon={<Add />}
         data-testid='open-modal'
         onClick={handleOpen}
@@ -50,7 +50,7 @@ const TaskModal = ({projectId}) => {
       <Dialog
         fullScreen
         onClose={handleClose}
-        aria-labelledby="task-modal"
+        aria-labelledby='task-modal'
         open={open}
         data-testid='task-modal'
       >
@@ -58,7 +58,7 @@ const TaskModal = ({projectId}) => {
           Add Task - {projectId}
 
           <IconButton
-            aria-label="close"
+            aria-label='close'
             onClick={handleClose}
             sx={{
               position: 'absolute',
@@ -70,7 +70,7 @@ const TaskModal = ({projectId}) => {
           </IconButton>
         </DialogTitle>
         <DialogContent dividers>
-          <Container sx={{ py: 6 }} maxWidth="sm" align="center">
+          <Container sx={{ py: 6 }} maxWidth='sm' align='center'>
             <Formik
               initialValues={INITIAL_VALUES}
               validationSchema={TASK_SCHEMA}
@@ -81,22 +81,22 @@ const TaskModal = ({projectId}) => {
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
                       <Field component={TextField}
-                             name="content"
+                             name='content'
                              inputProps={{
-                               "data-testid": "content",
+                               'data-testid': 'content',
                              }}
                              fullWidth
-                             label="Content"
-                             placeholder="Content"
-                             variant="outlined"
+                             label='Content'
+                             placeholder='Content'
+                             variant='outlined'
                              autoFocus
                       />
                     </Grid>
 
                     <Grid item xs={12}>
                       <DialogActions sx={{ flex: 1, px: 0, mt: 2 }}>
-                        <Button fullWidth variant="outlined" onClick={handleClose}>Cancel</Button>
-                        <SubmitButton data-testid="submit" loading={fetching}>Create Task</SubmitButton>
+                        <Button fullWidth variant='outlined' onClick={handleClose}>Cancel</Button>
+                        <SubmitButton loading={fetching}>Create Task</SubmitButton>
                       </DialogActions>
                     </Grid>
                   </Grid>

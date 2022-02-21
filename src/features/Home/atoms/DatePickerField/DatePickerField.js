@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useField, useFormikContext, ErrorMessage } from 'formik';
 import MobileDateTimePicker from '@mui/lab/MobileDateTimePicker';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -22,7 +22,7 @@ const DatePickerField = ({ ...props }) => {
           setFieldValue(field.name, val);
         }}
       />
-      <ErrorMessage component={FormHelperText} name={props.name} error sx={{ mx: "14px" }}/>
+      <ErrorMessage component={FormHelperText} name={props.name} error sx={{ mx: '14px' }}/>
     </LocalizationProvider>
   );
 };
