@@ -9,7 +9,6 @@ describe('ProjectModal', () => {
 
   describe('with valid data', () => {
     it('calls handleClose() with correct params', async () => {
-
       render();
 
       userEvent.click(screen.getByTestId('open-modal'))

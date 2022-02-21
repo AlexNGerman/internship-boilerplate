@@ -11,8 +11,8 @@ const DeleteProjectButton = ({ id }) => {
   const [{ fetching }, deleteProject] = useMutation(DELETE_PROJECT);
 
   const onDeleteProject = async (id) => {
-    const responce = await deleteProject({ id: id });
-    if(!responce.error) navigate(ROUTES.HOME);
+    const response = await deleteProject({ id: id });
+    if(!response.error) navigate(ROUTES.HOME);
   }
   return (
     <Button variant="contained" color="error" onClick={() => onDeleteProject(id)} disabled={fetching}>

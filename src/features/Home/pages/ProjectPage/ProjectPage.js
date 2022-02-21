@@ -7,7 +7,7 @@ import { GET_PROJECT } from 'queries/GetProject/getProject';
 import TasksList from 'features/Home/organisms/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
 import DeleteProjectButton from 'features/Home/atoms/DeleteProjectButton';
-import AppProjectHeader from 'features/Home/organisms/AppProjectHeader';
+import ProjectHeader from 'features/Home/organisms/ProjectHeader';
 
 const ProjectPage = () => {
   const { id } = useParams();
@@ -17,9 +17,9 @@ const ProjectPage = () => {
   });
   const project = !fetching && data?.project;
   return (
-    <MainTemplate header={<AppProjectHeader project={project} />}>
+    <MainTemplate header={<ProjectHeader project={project} />}>
       {fetching && <CircularProgress color='primary' />}
-      {(project)
+      {project
         ?
         <>
           <Box sx={{ width: '100%', mb: 3, py: 1, maxWidth: 480, bgcolor: 'background.paper', boxShadow: 1 }}>

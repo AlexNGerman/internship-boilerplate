@@ -5,12 +5,12 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField } from 'formik-mui';
 import { Grid, CircularProgress, Typography, Alert, AlertTitle } from '@mui/material';
-import AppProjectHeader from 'features/Home/organisms/AppProjectHeader';
+import ProjectHeader from 'features/Home/organisms/ProjectHeader';
 import MainTemplate from 'components/templates/MainTemplate';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
 import SubmitButton from 'components/molecules/SubmitButton';
 import { GET_PROJECT } from 'queries/GetProject/getProject';
-import { UPDATE_PROJECT } from "mutations/UpdateProject/updateProject";
+import { UPDATE_PROJECT } from 'mutations/UpdateProject/updateProject';
 import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
 
 const PROJECT_EDIT_SCHEMA = Yup.object().shape({
@@ -36,8 +36,8 @@ const ProjectEdit = () => {
   const project = !fetching && data?.project;
 
   const onSubmit = async (values, { setSubmitting }) => {
-    values = {...values, id }
-    const result = await updateProject(values);
+    const params = {...values, id };
+    const result = await updateProject(params);
     setSubmitting(false);
     if(!result?.error) navigate(`/project/${id}`);
   }
@@ -48,9 +48,9 @@ const ProjectEdit = () => {
   }
 
   return (
-    <MainTemplate header={<AppProjectHeader project={project} edit/>}>
+    <MainTemplate header={<ProjectHeader project={project} edit/>}>
       {fetching && <CircularProgress color='primary' />}
-      {(project)
+      {project
         ?
         <FormTemplate>
           <Typography variant="h3" component="div" gutterBottom align="center">

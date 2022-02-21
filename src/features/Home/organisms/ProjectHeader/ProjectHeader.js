@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Button } from '@mui/material';
 import { ROUTES } from 'constants/routes';
-import { Edit, ArrowBack } from "@mui/icons-material";
+import { Edit, ArrowBack } from '@mui/icons-material';
 
-const AppProjectHeader = ({ project, edit = false }) => {
+const ProjectHeader = ({ project, edit = false }) => {
   const { id, title } = project;
   return (
     <AppBar position="relative">
@@ -21,4 +21,4 @@ const AppProjectHeader = ({ project, edit = false }) => {
   );
 }
 
-export default AppProjectHeader;
+export default ProjectHeader;

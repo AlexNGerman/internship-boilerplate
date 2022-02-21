@@ -1,6 +1,5 @@
 import { graphql } from 'msw';
 import * as responses from 'utils/tests/responses';
-import {createTask} from "utils/tests/responses";
 
 export const signUpError = graphql.mutation('CreateUser', (_, res, ctx) => {
   return res(

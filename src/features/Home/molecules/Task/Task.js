@@ -9,32 +9,29 @@ const Task = ({ task }) => {
   const labelId = `checkbox-list-label-${task}`;
   const [{fetching}, updateTask] = useMutation(UPDATE_TASK);
 
-  const handleToggle = (values) => () => {
-    updateTask(values)
+  const handleToggle = () => {
+    updateTask({id: id, done: !done })
   };
 
   return (
-    <div>
-      <ListItem
-        key={task}
-        secondaryAction={ <DeleteTaskButton id={ id }/>}
-        disablePadding
-        disabled={ fetching }
-      >
-        <ListItemButton onClick={ handleToggle({id: id, done: !done }) } dense>
-          <ListItemIcon>
-            <Checkbox
-              edge="start"
-              checked={done}
-              tabIndex={-1}
-              disableRipple
-              inputProps={{ 'aria-labelledby': labelId }}
-            />
-          </ListItemIcon>
-          <ListItemText id={labelId} primary={content} style={{textDecoration: done && 'line-through' }} />
-        </ListItemButton>
-      </ListItem>
-    </div>
+    <ListItem
+      key={task}
+      secondaryAction={ <DeleteTaskButton id={ id }/>}
+      disablePadding
+      disabled={ fetching }
+    ><ListItemButton onClick={ handleToggle } dense>
+        <ListItemIcon>
+          <Checkbox
+            edge="start"
+            checked={done}
+            tabIndex={-1}
+            disableRipple
+            inputProps={{ 'aria-labelledby': labelId }}
+          />
+        </ListItemIcon>
+        <ListItemText id={labelId} primary={content} style={{textDecoration: done && 'line-through' }} />
+      </ListItemButton>
+    </ListItem>
   );
 }
 

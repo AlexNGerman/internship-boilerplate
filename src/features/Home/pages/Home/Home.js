@@ -28,9 +28,7 @@ const Home = () => {
                 :
                   (projects?.length)
                     ?
-                      projects.map(project => {
-                        return <Project key={project.createdAt} project={project} />;
-                      })
+                      projects.map(project => <Project key={project.createdAt} project={project} />)
                     :
                       <p>You don't have any projects yet</p>
       }
