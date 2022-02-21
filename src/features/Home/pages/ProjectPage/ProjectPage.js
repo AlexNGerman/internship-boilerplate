@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from 'urql';
 import { useParams } from 'react-router-dom'
 import {Grid, CircularProgress, Box, Typography, Divider } from '@mui/material';
+import moment from 'moment';
 import MainTemplate from 'components/templates/MainTemplate';
 import { GET_PROJECT } from 'queries/GetProject/getProject';
 import TasksList from 'features/Home/organisms/TasksList';
@@ -27,7 +28,12 @@ const ProjectPage = () => {
               <Grid container alignItems="center">
                 <Grid item xs={12}>
                   <Typography gutterBottom variant="h6" component="div">
-                    {project.title} - {project.deadline}
+                    {project.title}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography gutterBottom variant="p" component="p">
+                    Deadline: {moment(project.deadline).format("MM/DD/YYYY HH:mm a")}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>

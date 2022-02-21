@@ -24,7 +24,7 @@ const AppHeader = () => {
             <Button onClick={logOut} variant="contained" color="error">Logout</Button>
           :
             <>
-              <Button to={ ROUTES.SIGNIN } component={Link} variant="outlined" color="info" style={{ color: '#fff', borderColor: '#fff' }} sx={{ mr: 3 }} >Sign In</Button>
+              <Button to={ ROUTES.SIGNIN } component={Link} variant="outlined" color="white" sx={{ mr: 3 }} >Sign In</Button>
               <Button to={ ROUTES.SIGNUP } component={Link} variant="contained" color="secondary">Sign Up</Button>
             </>
         }
