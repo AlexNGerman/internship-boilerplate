@@ -1,4 +1,4 @@
-import { gql } from 'urql';
+import {gql} from 'urql';
 
 export const CREATE_PROJECT = gql`
   mutation CreateProject($title: String!, $description: String!, $deadline: String!){

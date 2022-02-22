@@ -1,4 +1,4 @@
-import { gql } from 'urql';
+import {gql} from 'urql';
 
 export const DELETE_TASK = gql`
   mutation DeleteTask($id: ID!){

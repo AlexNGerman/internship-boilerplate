@@ -1,4 +1,4 @@
-import { gql } from 'urql';
+import {gql} from 'urql';
 
 export const UPDATE_TASK = gql`
   mutation UpdateTask($id: ID!, $done: Boolean!){

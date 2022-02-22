@@ -1,11 +1,11 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import {screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderComponent from 'utils/tests/renderComponent';
 import ProjectModal from 'features/Home/organisms/ProjectModal';
 
 describe('ProjectModal', () => {
-  const render = () => renderComponent(<ProjectModal />);
+  const render = () => renderComponent(<ProjectModal/>);
 
   describe('with valid data', () => {
     it('calls handleClose() with correct params', async () => {
@@ -24,7 +24,7 @@ describe('ProjectModal', () => {
   })
 
   describe('with invalid data', () => {
-    describe('with empty fields' , () => {
+    describe('with empty fields', () => {
       it('renders correct errors', async () => {
         render();
 
@@ -46,7 +46,7 @@ describe('ProjectModal', () => {
       });
     })
 
-    describe('with too short title and description' , () => {
+    describe('with too short title and description', () => {
       it('renders correct errors', async () => {
         render();
 
@@ -64,7 +64,7 @@ describe('ProjectModal', () => {
       });
     })
 
-    describe('with too long title and description' , () => {
+    describe('with too long title and description', () => {
       it('renders correct errors', async () => {
         render();
 

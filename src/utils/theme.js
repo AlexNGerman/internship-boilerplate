@@ -1,4 +1,5 @@
-import { createTheme } from '@mui/material/styles';
+import {createTheme} from '@mui/material/styles';
+
 const theme = createTheme({
   palette: {
     white: {
@@ -9,7 +10,7 @@ const theme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { variant: 'unbordered' },
+          props: {variant: 'unbordered'},
           style: {
             textTransform: 'none',
             border: 'none',

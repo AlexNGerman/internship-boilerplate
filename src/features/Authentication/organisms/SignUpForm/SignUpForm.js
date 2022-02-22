@@ -39,11 +39,11 @@ const INITIAL_VALUES = {
 }
 
 const SignUpForm = () => {
-  const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
+  const [{fetching, error}, createUser] = useMutation(CREATE_USER);
   const errorMessage = error?.message;
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, {setSubmitting}) => {
     const result = await createUser(values);
     setSubmitting(false);
     if(!result.error) navigate(ROUTES.SIGNIN);

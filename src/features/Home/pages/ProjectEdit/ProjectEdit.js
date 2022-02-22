@@ -1,17 +1,17 @@
-import React  from 'react';
-import { useMutation, useQuery } from 'urql';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Formik, Form, Field } from 'formik';
+import React from 'react';
+import {useMutation, useQuery} from 'urql';
+import {useNavigate, useParams} from 'react-router-dom';
+import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
-import { TextField } from 'formik-mui';
-import { Grid, CircularProgress, Typography, Alert, AlertTitle } from '@mui/material';
+import {TextField} from 'formik-mui';
+import {Grid, CircularProgress, Typography, Alert, AlertTitle} from '@mui/material';
 import ProjectHeader from 'features/Home/organisms/ProjectHeader';
 import MainTemplate from 'components/templates/MainTemplate';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
 import SubmitButton from 'components/molecules/SubmitButton';
-import { GET_PROJECT } from 'queries/GetProject/getProject';
-import { UPDATE_PROJECT } from 'mutations/UpdateProject/updateProject';
-import { MIN_LENGTH, MAX_LENGTH } from 'constants/auth';
+import {GET_PROJECT} from 'queries/GetProject/getProject';
+import {UPDATE_PROJECT} from 'mutations/UpdateProject/updateProject';
+import {MIN_LENGTH, MAX_LENGTH} from 'constants/auth';
 
 const PROJECT_EDIT_SCHEMA = Yup.object().shape({
   title: Yup.string()
@@ -25,18 +25,18 @@ const PROJECT_EDIT_SCHEMA = Yup.object().shape({
 });
 
 const ProjectEdit = () => {
-  const { id } = useParams();
+  const {id} = useParams();
   const navigate = useNavigate();
-  const [{ error }, updateProject] = useMutation(UPDATE_PROJECT);
-  const [{ fetching, data }] = useQuery({
+  const [{error}, updateProject] = useMutation(UPDATE_PROJECT);
+  const [{fetching, data}] = useQuery({
     query: GET_PROJECT,
-    variables: { id },
+    variables: {id},
   });
   const errorMessage = error?.message;
   const project = !fetching && data?.project;
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    const params = {...values, id };
+  const onSubmit = async (values, {setSubmitting}) => {
+    const params = {...values, id};
     const result = await updateProject(params);
     setSubmitting(false);
     if(!result?.error) navigate(`/project/${id}`);
@@ -58,7 +58,7 @@ const ProjectEdit = () => {
           </Typography>
 
           {errorMessage &&
-            <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+            <Grid container spacing={2} sx={{mt: 3, mb: 3}}>
               <Grid item xs={12}>
                 <Alert severity='error' align='left'>
                   <AlertTitle>Error</AlertTitle>
@@ -72,7 +72,7 @@ const ProjectEdit = () => {
             validationSchema={PROJECT_EDIT_SCHEMA}
             onSubmit={onSubmit}
           >
-            {(props) => (
+            {() => (
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>

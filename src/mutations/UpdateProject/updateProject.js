@@ -1,4 +1,4 @@
-import { gql } from 'urql';
+import {gql} from 'urql';
 
 export const UPDATE_PROJECT = gql`
   mutation UpdateProject($id: ID!, $title: String!, $description: String!){

@@ -1,11 +1,11 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import {screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderComponent from 'utils/tests/renderComponent';
 import TaskModal from 'features/Home/organisms/TaskModal';
 
 describe('TaskModal', () => {
-  const render = () => renderComponent(<TaskModal />);
+  const render = () => renderComponent(<TaskModal/>);
 
   describe('with valid data', () => {
     it('calls handleClose() with correct params', async () => {
@@ -22,7 +22,7 @@ describe('TaskModal', () => {
   })
 
   describe('with invalid data', () => {
-    describe('with empty fields' , () => {
+    describe('with empty fields', () => {
       it('renders correct errors', async () => {
         render();
 
@@ -36,7 +36,7 @@ describe('TaskModal', () => {
       });
     })
 
-    describe('with too short content' , () => {
+    describe('with too short content', () => {
       it('renders correct errors', async () => {
         render();
 
@@ -50,7 +50,7 @@ describe('TaskModal', () => {
       });
     })
 
-    describe('with too long content' , () => {
+    describe('with too long content', () => {
       it('renders correct errors', async () => {
         render();
 

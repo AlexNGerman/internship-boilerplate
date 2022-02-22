@@ -7,7 +7,7 @@ import ProjectModal from 'features/Home/organisms/ProjectModal';
 import { GET_PROJECTS } from 'queries/GetProjects/getProjects';
 
 const Home = () => {
-  const [{ data, fetching, error }] = useQuery({
+  const [{data, fetching, error}] = useQuery({
     query: GET_PROJECTS,
   });
   const projects = data?.projects;

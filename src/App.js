@@ -1,10 +1,9 @@
-import React, { useMemo } from 'react';
-import { createClient, Provider, dedupExchange, cacheExchange, fetchExchange, errorExchange } from 'urql';
-import { authExchange } from '@urql/exchange-auth';
-import { makeOperation } from '@urql/core';
-import { API_URL } from 'constants/api';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
+import React, {useMemo} from 'react';
+import {createClient, Provider, dedupExchange, cacheExchange, fetchExchange, errorExchange} from 'urql';
+import {authExchange} from '@urql/exchange-auth';
+import {makeOperation} from '@urql/core';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {ThemeProvider} from '@mui/material/styles';
 import PrivateRoute from 'features/Authentication/molecules/PrivateRoute';
 import SignIn from 'features/Authentication/pages/SignIn';
 import SignUp from 'features/Authentication/pages/SignUp';
@@ -12,8 +11,9 @@ import Home from 'features/Home/pages/Home';
 import ProjectPage from 'features/Home/pages/ProjectPage';
 import ProjectEdit from 'features/Home/pages/ProjectEdit';
 import theme from 'utils/theme';
-import { getToken, removeToken } from 'utils/auth/cookies';
-import { ROUTES } from 'constants/routes';
+import {getToken, removeToken} from 'utils/auth/cookies';
+import {API_URL} from 'constants/api';
+import {ROUTES} from 'constants/routes';
 
 const App = () => {
   const token = getToken();
@@ -26,7 +26,7 @@ const App = () => {
       url: API_URL,
       fetchOptions: () => {
         const token = getToken()
-        return token ? { headers: { Authorization: `Bearer ${token}` }} : {}
+        return token ? {headers: {Authorization: `Bearer ${token}`}} : {}
       },
       exchanges: [
         dedupExchange,
@@ -37,13 +37,13 @@ const App = () => {
               e => e.extensions?.code === 401,
             );
 
-            if (isAuthError) logOut();
+            if(isAuthError) logOut();
           }
         }),
         authExchange({
-          addAuthToOperation: ({ authState , operation}) => {
+          addAuthToOperation: ({authState, operation}) => {
 
-            if (!authState || !authState.token) {
+            if(!authState || !authState.token){
               return operation;
             }
 
@@ -67,16 +67,16 @@ const App = () => {
               },
             );
           },
-          willAuthError: ({ authState }) => !authState,
-          didAuthError: ({ error }) => {
+          willAuthError: ({authState}) => !authState,
+          didAuthError: ({error}) => {
             return error.graphQLErrors.some(
               e => e.extensions?.code === 401
             );
           },
-          getAuth: async ({ authState }) => {
-            if (!authState) {
-              if (token) {
-                return { token };
+          getAuth: async ({authState}) => {
+            if(!authState){
+              if(token){
+                return {token};
               }
               return null;
             }

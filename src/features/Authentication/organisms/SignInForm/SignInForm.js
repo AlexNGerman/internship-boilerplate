@@ -30,10 +30,10 @@ const INITIAL_VALUES = {
 }
 
 const SignInForm = () => {
-  const [{ fetching, error }, signInUser] = useMutation(SIGNIN_USER);
+  const [{fetching, error}, signInUser] = useMutation(SIGNIN_USER);
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, {setSubmitting}) => {
     const result = await signInUser(values);
     const token = result.data?.signInUser.token;
     if(token) setToken(token);
@@ -53,9 +53,8 @@ const SignInForm = () => {
             <Typography variant='h3' component='div' gutterBottom align='center'>
               Sign In
             </Typography>
-
             {error &&
-              <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+              <Grid container spacing={2} sx={{mt: 3, mb: 3}}>
                 <Grid item xs={12}>
                   <Alert severity='error' align='left'>
                     <AlertTitle>Error</AlertTitle>

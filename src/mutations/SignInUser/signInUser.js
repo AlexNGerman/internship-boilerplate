@@ -1,4 +1,4 @@
-import { gql } from 'urql';
+import {gql} from 'urql';
 
 export const SIGNIN_USER = gql`
   mutation SignInUser($email: String!, $password: String!) {
