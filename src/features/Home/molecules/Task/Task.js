@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 const Task = ({task}) => {
   const classes = useStyles();
   const {content, id, done} = task;
-  const labelId = `checkbox-list-label-${task}`;
+  const labelId = `checkbox-list-label-${id}`;
   const [{fetching}, updateTask] = useMutation(UPDATE_TASK);
 
   const handleToggle = () => {
@@ -23,7 +23,7 @@ const Task = ({task}) => {
 
   return (
     <ListItem
-      key={task}
+      key={id}
       secondaryAction={<DeleteTaskButton id={id} />}
       disablePadding
       disabled={fetching}
