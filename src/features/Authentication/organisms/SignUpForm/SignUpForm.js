@@ -1,15 +1,15 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import {Formik, Form, Field} from 'formik';
+import {useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
-import { TextField } from 'formik-mui';
-import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
-import { useMutation } from 'urql';
+import {TextField} from 'formik-mui';
+import {Grid, Typography, Alert, AlertTitle} from '@mui/material';
+import {useMutation} from 'urql';
 import SubmitButton from 'components/molecules/SubmitButton';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
-import { CREATE_USER } from 'mutations/CreateUser/createUser';
-import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
-import { ROUTES } from 'constants/routes';
+import {CREATE_USER} from 'mutations/User/CreateUser/createUser';
+import {MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX} from 'constants/auth';
+import {ROUTES} from 'constants/routes';
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
@@ -63,7 +63,7 @@ const SignUpForm = () => {
             </Typography>
 
             {errorMessage &&
-              <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+              <Grid container spacing={2} sx={{mt: 3, mb: 3}}>
                 <Grid item xs={12}>
                   <Alert severity='error' align='left'>
                     <AlertTitle>Error</AlertTitle>

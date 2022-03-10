@@ -27,7 +27,6 @@ describe('TaskModal', () => {
         render();
 
         userEvent.click(screen.getByTestId('open-modal'))
-        userEvent.type(screen.getByTestId('content'), '')
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
@@ -45,7 +44,7 @@ describe('TaskModal', () => {
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
-          expect(screen.getByText(`Content can't be less than 2 characters`)).toBeInTheDocument()
+          expect(screen.getByText('Content can\'t be less than 2 characters')).toBeInTheDocument()
         });
       });
     })
@@ -55,11 +54,11 @@ describe('TaskModal', () => {
         render();
 
         userEvent.click(screen.getByTestId('open-modal'))
-        userEvent.type(screen.getByTestId('content'), 'content content content content content content content content ')
+        userEvent.type(screen.getByTestId('content'), 'content content content content content content content content')
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
-          expect(screen.getByText(`Content can't be longer than 50 characters`)).toBeInTheDocument()
+          expect(screen.getByText('Content can\'t be longer than 50 characters')).toBeInTheDocument()
         });
       });
     })

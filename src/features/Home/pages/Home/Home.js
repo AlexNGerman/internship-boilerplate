@@ -4,7 +4,7 @@ import { Grid, Alert, AlertTitle, CircularProgress } from '@mui/material';
 import MainTemplate from 'components/templates/MainTemplate';
 import Project from 'features/Home/molecules/Project';
 import ProjectModal from 'features/Home/organisms/ProjectModal';
-import { GET_PROJECTS } from 'queries/GetProjects/getProjects';
+import { GET_PROJECTS } from 'queries/Project/GetProjects/getProjects';
 
 const Home = () => {
   const [{data, fetching, error}] = useQuery({
@@ -28,7 +28,7 @@ const Home = () => {
                 :
                   (projects?.length)
                     ?
-                      projects.map(project => <Project key={project.createdAt} project={project} />)
+                      projects.map(project => <Project key={project.id} project={project} />)
                     :
                       <p>You don't have any projects yet</p>
       }

@@ -6,7 +6,7 @@ import {TextField} from 'formik-mui';
 import {Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Container, Button} from '@mui/material';
 import {Close, Add} from '@mui/icons-material';
 import SubmitButton from 'components/molecules/SubmitButton';
-import {CREATE_TASK} from 'mutations/CreateTask/createTask';
+import {CREATE_TASK} from 'mutations/Task/CreateTask/createTask';
 import {MIN_LENGTH, MAX_LENGTH} from 'constants/auth';
 
 const TASK_SCHEMA = Yup.object().shape({
@@ -50,8 +50,9 @@ const TaskModal = ({projectId}) => {
         aria-labelledby='task-modal'
         open={open}
         data-testid='task-modal'
-      ><DialogTitle sx={{m: 0, p: 2}}>
-        Add Task - {projectId}
+      >
+        <DialogTitle sx={{m: 0, p: 2}}>
+        Add Task
         <IconButton
           aria-label='close'
           onClick={handleClose}
@@ -70,7 +71,8 @@ const TaskModal = ({projectId}) => {
               initialValues={INITIAL_VALUES}
               validationSchema={TASK_SCHEMA}
               onSubmit={onSubmit}
-            >{() => (
+            >
+              {() => (
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>

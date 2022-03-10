@@ -56,10 +56,10 @@ describe('ProjectModal', () => {
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
-          expect(screen.getByText(`Title can't be less than 2 characters`)).toBeInTheDocument()
+          expect(screen.getByText('Title can\'t be less than 2 characters')).toBeInTheDocument()
         });
         await waitFor(() => {
-          expect(screen.getByText(`Description can't be less than 2 characters`)).toBeInTheDocument()
+          expect(screen.getByText('Description can\'t be less than 2 characters')).toBeInTheDocument()
         });
       });
     })
@@ -69,15 +69,15 @@ describe('ProjectModal', () => {
         render();
 
         userEvent.click(screen.getByTestId('open-modal'))
-        userEvent.type(screen.getByTestId('title'), 'title title title title title title title title title title title title ')
-        userEvent.type(screen.getByTestId('description'), 'description description description description description description ')
+        userEvent.type(screen.getByTestId('title'), 'title title title title title title title title title title title title')
+        userEvent.type(screen.getByTestId('description'), 'description description description description description description')
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
-          expect(screen.getByText(`Title can't be longer than 50 characters`)).toBeInTheDocument()
+          expect(screen.getByText('Title can\'t be longer than 50 characters')).toBeInTheDocument()
         });
         await waitFor(() => {
-          expect(screen.getByText(`Description can't be longer than 50 characters`)).toBeInTheDocument()
+          expect(screen.getByText('Description can\'t be longer than 50 characters')).toBeInTheDocument()
         });
       });
     })

@@ -5,9 +5,13 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import {TextField, FormHelperText} from '@mui/material';
 
-const DatePickerField = ({...props}) => {
+const DatePickerField = (props) => {
   const {setFieldValue} = useFormikContext();
   const [field] = useField(props);
+
+  const onChange = (date) => {
+    setFieldValue(field.name, date);
+  }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -18,9 +22,7 @@ const DatePickerField = ({...props}) => {
         disablePast
         showTodayButton
         selected={(field.value && new Date(field.value)) || null}
-        onChange={val => {
-          setFieldValue(field.name, val);
-        }}
+        onChange={onChange}
       />
       <ErrorMessage component={FormHelperText} name={props.name} error sx={{mx: '14px'}} />
     </LocalizationProvider>

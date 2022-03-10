@@ -1,16 +1,16 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import {Formik, Form, Field} from 'formik';
+import {useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
-import { TextField } from 'formik-mui';
-import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
-import { useMutation } from 'urql';
+import {TextField} from 'formik-mui';
+import {Grid, Typography, Alert, AlertTitle} from '@mui/material';
+import {useMutation} from 'urql';
 import SubmitButton from 'components/molecules/SubmitButton';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
-import { SIGNIN_USER } from 'mutations/SignInUser/signInUser';
-import { PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
-import { ROUTES } from 'constants/routes';
-import { setToken } from 'utils/auth/cookies';
+import {SIGNIN_USER} from 'mutations/User/SignInUser/signInUser';
+import {PASSWORD_LENGTH, PASSWORD_REGEX} from 'constants/auth';
+import {ROUTES} from 'constants/routes';
+import {setToken} from 'utils/auth/cookies';
 
 const SIGNIN_SCHEMA = Yup.object().shape({
   email: Yup.string()

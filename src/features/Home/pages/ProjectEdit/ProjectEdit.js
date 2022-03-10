@@ -9,8 +9,8 @@ import ProjectHeader from 'features/Home/organisms/ProjectHeader';
 import MainTemplate from 'components/templates/MainTemplate';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
 import SubmitButton from 'components/molecules/SubmitButton';
-import {GET_PROJECT} from 'queries/GetProject/getProject';
-import {UPDATE_PROJECT} from 'mutations/UpdateProject/updateProject';
+import {GET_PROJECT} from 'queries/Project/GetProject/getProject';
+import {UPDATE_PROJECT} from 'mutations/Project/UpdateProject/updateProject';
 import {MIN_LENGTH, MAX_LENGTH} from 'constants/auth';
 
 const PROJECT_EDIT_SCHEMA = Yup.object().shape({

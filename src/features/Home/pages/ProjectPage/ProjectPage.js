@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 import {Grid, CircularProgress, Box, Typography, Divider} from '@mui/material';
 import {parseISO, format} from 'date-fns';
 import MainTemplate from 'components/templates/MainTemplate';
-import {GET_PROJECT} from 'queries/GetProject/getProject';
+import {GET_PROJECT} from 'queries/Project/GetProject/getProject';
 import TasksList from 'features/Home/organisms/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
 import DeleteProjectButton from 'features/Home/atoms/DeleteProjectButton';

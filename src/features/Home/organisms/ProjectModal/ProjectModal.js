@@ -7,7 +7,7 @@ import {SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton
 import {Close, Add} from '@mui/icons-material';
 import SubmitButton from 'components/molecules/SubmitButton';
 import DatePickerField from 'features/Home/atoms/DatePickerField';
-import {CREATE_PROJECT} from 'mutations/CreateProject/createProject';
+import {CREATE_PROJECT} from 'mutations/Project/CreateProject/createProject';
 import {MIN_LENGTH, MAX_LENGTH} from 'constants/auth';
 
 const PROJECT_SCHEMA = Yup.object().shape({
@@ -56,7 +56,8 @@ const ProjectModal = () => {
         aria-labelledby='project-modal'
         open={open}
         data-testid='project-modal'
-      ><DialogTitle sx={{m: 0, p: 2}}>
+      >
+        <DialogTitle sx={{m: 0, p: 2}}>
         Add Project
         <IconButton
           aria-label='close'
@@ -76,7 +77,8 @@ const ProjectModal = () => {
               initialValues={INITIAL_VALUES}
               validationSchema={PROJECT_SCHEMA}
               onSubmit={onSubmit}
-            >{() => (
+            >
+              {() => (
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
