@@ -7,7 +7,7 @@ import {SpeedDial, Dialog, DialogTitle, DialogContent, DialogActions, IconButton
 import {Close, Add} from '@mui/icons-material';
 import SubmitButton from 'components/molecules/SubmitButton';
 import DatePickerField from 'features/Home/atoms/DatePickerField';
-import {CREATE_PROJECT} from 'mutations/Project/CreateProject/createProject';
+import {CREATE_PROJECT} from 'mutations/Project/createProject';
 import {MIN_LENGTH, MAX_LENGTH} from 'constants/auth';
 
 const PROJECT_SCHEMA = Yup.object().shape({

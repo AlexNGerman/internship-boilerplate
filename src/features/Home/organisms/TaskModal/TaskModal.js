@@ -6,7 +6,7 @@ import {TextField} from 'formik-mui';
 import {Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Grid, Container, Button} from '@mui/material';
 import {Close, Add} from '@mui/icons-material';
 import SubmitButton from 'components/molecules/SubmitButton';
-import {CREATE_TASK} from 'mutations/Task/CreateTask/createTask';
+import {CREATE_TASK} from 'mutations/Task/createTask';
 import {MIN_LENGTH, MAX_LENGTH} from 'constants/auth';
 
 const TASK_SCHEMA = Yup.object().shape({

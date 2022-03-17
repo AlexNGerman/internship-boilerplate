@@ -2,7 +2,7 @@ import React from 'react';
 import {useMutation} from 'urql';
 import {makeStyles} from '@mui/styles';
 import {ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox} from '@mui/material';
-import {UPDATE_TASK} from 'mutations/Task/UpdateTask/updateTask';
+import {UPDATE_TASK} from 'mutations/Task/updateTask';
 import DeleteTaskButton from 'features/Home/atoms/DeleteTaskButton';
 
 const useStyles = makeStyles({

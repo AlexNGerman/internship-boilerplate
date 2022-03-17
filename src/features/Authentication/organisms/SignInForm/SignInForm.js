@@ -7,7 +7,7 @@ import {Grid, Typography, Alert, AlertTitle} from '@mui/material';
 import {useMutation} from 'urql';
 import SubmitButton from 'components/molecules/SubmitButton';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
-import {SIGNIN_USER} from 'mutations/User/SignInUser/signInUser';
+import {SIGNIN_USER} from 'mutations/User/signInUser';
 import {PASSWORD_LENGTH, PASSWORD_REGEX} from 'constants/auth';
 import {ROUTES} from 'constants/routes';
 import {setToken} from 'utils/auth/cookies';
