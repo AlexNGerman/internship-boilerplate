@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Grid } from '@mui/material';
+import {Box, Grid} from '@mui/material';
 
-const FormTemplate = ({ children }) => (
+const FormTemplate = ({children}) => (
   <Grid item xs={12} sm={8} md={5}>
     <Box
       sx={{

@@ -1,16 +1,16 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import {Formik, Form, Field} from 'formik';
+import {useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
-import { TextField } from 'formik-mui';
-import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
-import { useMutation } from 'urql';
-import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import {TextField} from 'formik-mui';
+import {Grid, Typography, Alert, AlertTitle} from '@mui/material';
+import {useMutation} from 'urql';
+import SubmitButton from 'components/molecules/SubmitButton';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
-import { SIGNIN_USER } from 'mutations/SignInUser/signInUser';
-import { PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
-import { ROUTES } from 'constants/routes';
-import { setToken } from 'utils/auth/cookies';
+import {SIGNIN_USER} from 'mutations/User/signInUser';
+import {PASSWORD_LENGTH, PASSWORD_REGEX} from 'constants/auth';
+import {ROUTES} from 'constants/routes';
+import {setToken} from 'utils/auth/cookies';
 
 const SIGNIN_SCHEMA = Yup.object().shape({
   email: Yup.string()
@@ -30,12 +30,12 @@ const INITIAL_VALUES = {
 }
 
 const SignInForm = () => {
-  const [{ fetching, error }, signInUser] = useMutation(SIGNIN_USER);
+  const [{fetching, error}, signInUser] = useMutation(SIGNIN_USER);
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, {setSubmitting}) => {
     const result = await signInUser(values);
-    const token = result.data.signInUser.token;
+    const token = result.data?.signInUser.token;
     if(token) setToken(token);
     setSubmitting(false);
     if(!result.error) navigate(ROUTES.HOME);
@@ -50,14 +50,13 @@ const SignInForm = () => {
       >
         {() => (
           <FormTemplate>
-            <Typography variant="h3" component="div" gutterBottom align="center">
+            <Typography variant='h3' component='div' gutterBottom align='center'>
               Sign In
             </Typography>
-
             {error &&
-              <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+              <Grid container spacing={2} sx={{mt: 3, mb: 3}}>
                 <Grid item xs={12}>
-                  <Alert severity="error" align='left'>
+                  <Alert severity='error' align='left'>
                     <AlertTitle>Error</AlertTitle>
                     {error.message}
                   </Alert>
@@ -68,32 +67,32 @@ const SignInForm = () => {
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Field component={TextField}
-                         name="email"
+                         name='email'
                          inputProps={{
-                           "data-testid": "email",
+                           'data-testid': 'email',
                          }}
-                         type="email"
+                         type='email'
                          fullWidth
-                         label="Email"
-                         placeholder="email@mail.com"
-                         variant="outlined"
+                         label='Email'
+                         placeholder='email@mail.com'
+                         variant='outlined'
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <Field component={TextField}
-                         name="password"
+                         name='password'
                          inputProps={{
-                           "data-testid": "password",
+                           'data-testid': 'password',
                          }}
-                         type="password"
+                         type='password'
                          fullWidth
-                         label="Password"
-                         placeholder="Password"
-                         variant="outlined"
+                         label='Password'
+                         placeholder='Password'
+                         variant='outlined'
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <SubmitButton data-testid="submit" loading={fetching}>Sign In</SubmitButton>
+                  <SubmitButton loading={fetching}>Sign In</SubmitButton>
                 </Grid>
               </Grid>
             </Form>

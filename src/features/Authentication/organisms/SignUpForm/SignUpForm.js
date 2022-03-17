@@ -1,15 +1,15 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import {Formik, Form, Field} from 'formik';
+import {useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
-import { TextField } from 'formik-mui';
-import { Grid, Typography, Alert, AlertTitle } from '@mui/material';
-import { useMutation } from 'urql';
-import SubmitButton from 'features/Authentication/molecules/SubmitButton';
+import {TextField} from 'formik-mui';
+import {Grid, Typography, Alert, AlertTitle} from '@mui/material';
+import {useMutation} from 'urql';
+import SubmitButton from 'components/molecules/SubmitButton';
 import FormTemplate from 'features/Authentication/templates/FormTemplate';
-import { CREATE_USER } from 'mutations/CreateUser/createUser';
-import { MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX  } from 'constants/auth';
-import { ROUTES } from 'constants/routes';
+import {CREATE_USER} from 'mutations/User/createUser';
+import {MIN_LENGTH, MAX_LENGTH, PASSWORD_LENGTH, PASSWORD_REGEX} from 'constants/auth';
+import {ROUTES} from 'constants/routes';
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
@@ -24,7 +24,7 @@ const SIGNUP_SCHEMA = Yup.object().shape({
     .email('Invalid email')
     .required('Please enter your email'),
   password: Yup.string()
-    .required("Please enter your password")
+    .required('Please enter your password')
     .matches(
       PASSWORD_REGEX,
       `Password must contain at least ${PASSWORD_LENGTH} characters, one uppercase, one number and one special case character`
@@ -39,11 +39,11 @@ const INITIAL_VALUES = {
 }
 
 const SignUpForm = () => {
-  const [{ fetching, error }, createUser] = useMutation(CREATE_USER);
-  const errorMessage = error && error?.message;
+  const [{fetching, error}, createUser] = useMutation(CREATE_USER);
+  const errorMessage = error?.message;
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, {setSubmitting}) => {
     const result = await createUser(values);
     setSubmitting(false);
     if(!result.error) navigate(ROUTES.SIGNIN);
@@ -58,14 +58,14 @@ const SignUpForm = () => {
       >
         {() => (
           <FormTemplate>
-            <Typography variant="h3" component="div" gutterBottom align="center">
+            <Typography variant='h3' component='div' gutterBottom align='center'>
               Sign Up
             </Typography>
 
             {errorMessage &&
-              <Grid container spacing={2} sx={{ mt: 3, mb: 3 }}>
+              <Grid container spacing={2} sx={{mt: 3, mb: 3}}>
                 <Grid item xs={12}>
-                  <Alert severity="error" align='left'>
+                  <Alert severity='error' align='left'>
                     <AlertTitle>Error</AlertTitle>
                     {errorMessage}
                   </Alert>
@@ -76,55 +76,55 @@ const SignUpForm = () => {
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Field component={TextField}
-                         name="firstName"
+                         name='firstName'
                          inputProps={{
-                           "data-testid": "firstName",
+                           'data-testid': 'firstName',
                          }}
-                         fullWidth label="First name"
-                         placeholder="First name"
-                         variant="outlined"
+                         fullWidth label='First name'
+                         placeholder='First name'
+                         variant='outlined'
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <Field component={TextField}
-                         name="lastName"
+                         name='lastName'
                          inputProps={{
-                           "data-testid": "lastName",
+                           'data-testid': 'lastName',
                          }}
                          fullWidth
-                         label="Last name"
-                         placeholder="Last name"
-                         variant="outlined"
+                         label='Last name'
+                         placeholder='Last name'
+                         variant='outlined'
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <Field component={TextField}
-                         name="email"
+                         name='email'
                          inputProps={{
-                           "data-testid": "email",
+                           'data-testid': 'email',
                          }}
-                         type="email"
+                         type='email'
                          fullWidth
-                         label="Email"
-                         placeholder="email@mail.com"
-                         variant="outlined"
+                         label='Email'
+                         placeholder='email@mail.com'
+                         variant='outlined'
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <Field component={TextField}
-                         name="password"
+                         name='password'
                          inputProps={{
-                           "data-testid": "password",
+                           'data-testid': 'password',
                          }}
-                         type="password"
+                         type='password'
                          fullWidth
-                         label="Password"
-                         placeholder="Password"
-                         variant="outlined"
+                         label='Password'
+                         placeholder='Password'
+                         variant='outlined'
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <SubmitButton data-testid="submit" loading={fetching}>Sign Up</SubmitButton>
+                  <SubmitButton loading={fetching}>Sign Up</SubmitButton>
                 </Grid>
               </Grid>
             </Form>
