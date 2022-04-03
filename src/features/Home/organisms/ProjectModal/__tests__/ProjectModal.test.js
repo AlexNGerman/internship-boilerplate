@@ -29,9 +29,6 @@ describe('ProjectModal', () => {
         render();
 
         userEvent.click(screen.getByTestId('open-modal'))
-        userEvent.type(screen.getByTestId('title'), '')
-        userEvent.type(screen.getByTestId('description'), '')
-        userEvent.type(screen.getByTestId('deadline'), '')
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
@@ -82,4 +79,30 @@ describe('ProjectModal', () => {
       });
     })
   })
+
+  describe('when user clicks on datepicker', () => {
+    it('shows datepicker and select today date', async () => {
+      render();
+
+      userEvent.click(screen.getByTestId('open-modal'))
+
+      await waitFor(() => {
+        expect(screen.queryByText('Today')).toBeNull();
+      });
+
+      userEvent.click(screen.getByTestId('deadline'));
+
+      await waitFor(() => {
+        expect(screen.queryByText('Today')).toBeInTheDocument();
+      });
+
+      userEvent.click(screen.queryByText('Today'));
+
+      await waitFor(() => {
+        expect(screen.queryByText('Today')).toBeNull();
+      }, {timeout: 3000});
+    });
+  });
+
+
 })
