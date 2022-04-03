@@ -40,7 +40,7 @@ export const requestHandlers = [
       ctx.data(responses.createTask),
     )
   }),
-  graphql.mutation('deleteTask', (_, res, ctx) => {
+  graphql.mutation('DeleteTask', (_, res, ctx) => {
     return res(
       ctx.data(responses.deleteTask),
     )
