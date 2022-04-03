@@ -12,7 +12,7 @@ const DeleteTaskButton = ({id}) => {
   }
 
   return (
-    <IconButton edge='end' aria-label='delete' color='error' onClick={() => onDeleteTask(id)} disabled={fetching}>
+    <IconButton edge='end' aria-label='delete' data-testid='deleteTask' color='error' onClick={() => onDeleteTask(id)} disabled={fetching}>
       <Delete fontSize='inherit' />
     </IconButton>
   )

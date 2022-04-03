@@ -44,14 +44,7 @@ export const getProjects = {
         content: 'task 1',
         createdAt: '2022-02-10 11:18:52 UTC',
         done: true,
-        id: 16,
-        projectId: 3
-      },
-      {
-        content: 'task 2',
-        createdAt:"2022-02-15 13:13:42 UTC",
-        done:true,
-        id: 23,
+        id: 1,
         projectId: 3
       }
     ],
@@ -61,5 +54,11 @@ export const getProjects = {
 
 export const getProjectsEmpty = {
   projects: []
+};
+
+export const deleteTask = {
+  deleteTask: {
+    id: 1
+  }
 };
 

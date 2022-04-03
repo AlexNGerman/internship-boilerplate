@@ -38,7 +38,7 @@ const Task = ({task}) => {
           inputProps={{'aria-labelledby': labelId}}
         />
       </ListItemIcon>
-      <ListItemText id={labelId} primary={content} className={done && classes.underlined} />
+      <ListItemText id={labelId} primary={content} className={done ? classes.underlined : ''} />
     </ListItemButton>
     </ListItem>
   );

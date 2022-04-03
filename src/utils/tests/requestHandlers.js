@@ -40,6 +40,11 @@ export const requestHandlers = [
       ctx.data(responses.createTask),
     )
   }),
+  graphql.mutation('deleteTask', (_, res, ctx) => {
+    return res(
+      ctx.data(responses.deleteTask),
+    )
+  }),
   graphql.query('GetProjects', (_, res, ctx) => {
     return res(
       ctx.data(responses.getProjects),
