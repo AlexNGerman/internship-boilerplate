@@ -32,3 +32,34 @@ export const createTask = {
     content: 'Test Task Description',
   }
 };
+
+export const getProjects = {
+  projects: [{
+    createdAt:  '2022-02-09 22:00:49 UTC',
+    deadline: '2022-02-10T10:00:00.000Z',
+    id: 3,
+    public:true,
+    tasks: [
+      {
+        content: 'task 1',
+        createdAt: '2022-02-10 11:18:52 UTC',
+        done: true,
+        id: 16,
+        projectId: 3
+      },
+      {
+        content: 'task 2',
+        createdAt:"2022-02-15 13:13:42 UTC",
+        done:true,
+        id: 23,
+        projectId: 3
+      }
+    ],
+    title:"Project 1"
+  }]
+};
+
+export const getProjectsEmpty = {
+  projects: []
+};
+
