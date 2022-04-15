@@ -35,20 +35,6 @@ describe('ProjectList', () => {
         expect(screen.getByText('You don\'t have any projects yet')).toBeInTheDocument();
       });
     });
-
-    it('user delete task', async () => {
-      render();
-
-      await waitFor(() => {
-        expect(screen.getByTestId('deleteTask')).toBeInTheDocument();
-      });
-
-      userEvent.click(screen.getByTestId('deleteTask'))
-
-      // await waitFor(() => {
-      //   expect(screen.getByText('You don\'t have any tasks yet')).toBeInTheDocument();
-      // }, {timeout: 3000});
-    });
   })
 
 })
