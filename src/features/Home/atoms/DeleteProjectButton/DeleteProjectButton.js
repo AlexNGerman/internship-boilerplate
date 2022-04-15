@@ -15,7 +15,7 @@ const DeleteProjectButton = ({id}) => {
     if(!response.error) navigate(ROUTES.HOME);
   }
   return (
-    <Button variant='contained' color='error' onClick={() => onDeleteProject(id)} disabled={fetching}>
+    <Button variant='contained' color='error' onClick={() => onDeleteProject(id)} disabled={fetching} data-testid='delete-project'>
       <Delete fontSize='inherit' /> Delete Project
     </Button>
   )

@@ -49,5 +49,15 @@ export const requestHandlers = [
     return res(
       ctx.data(responses.getProjects),
     )
-  })
+  }),
+  graphql.query('GetProject', (_, res, ctx) => {
+    return res(
+      ctx.data(responses.getProject),
+    )
+  }),
+  graphql.mutation('DeleteProject', (req, res, ctx) => {
+    return res(
+      ctx.data(responses.deleteProject)
+    )
+  }),
 ];
