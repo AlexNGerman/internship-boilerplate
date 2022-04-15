@@ -47,7 +47,7 @@ const ProjectModal = () => {
         ariaLabel='Open Create Project Modal'
         sx={{position: 'fixed', bottom: 16, right: 16}}
         icon={<Add/>}
-        data-testid='open-modal'
+        data-testid='open-project-modal'
         onClick={handleOpen}
       />
       <Dialog
