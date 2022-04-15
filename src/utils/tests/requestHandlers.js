@@ -60,4 +60,9 @@ export const requestHandlers = [
       ctx.data(responses.deleteProject)
     )
   }),
+  graphql.mutation('UpdateProject', (req, res, ctx) => {
+    return res(
+      ctx.data(responses.updateProject)
+    )
+  }),
 ];

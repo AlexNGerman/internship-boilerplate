@@ -90,3 +90,9 @@ export const deleteProject = {
     id: 3
   }
 }
+
+export const updateProject = {
+  updateProject: {
+    id: 1,
+  }
+}
