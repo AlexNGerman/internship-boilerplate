@@ -46,6 +46,10 @@ describe('ProjectPage', () => {
       useNavigate.mockReturnValue(navigate);
       render();
 
+      await waitFor(() => {
+        expect(screen.getByTestId('back-button')).toBeInTheDocument();
+      }, {timeout: 3000})
+
       userEvent.click(screen.getByTestId('back-button'));
 
       await waitFor(() => {
@@ -75,6 +79,27 @@ describe('ProjectPage', () => {
 
       await waitFor(() => {
         expect(navigate).toBeCalledWith(ROUTES.HOME);
+      }, {timeout: 3000});
+    });
+  })
+
+  describe('when user clicks on edit project button', () => {
+    it('redirects to project edit page', async () => {
+      useNavigate.mockReturnValue(navigate);
+      render();
+
+      await waitFor(() => {
+        expect(screen.getByTestId('edit-project')).toBeInTheDocument();
+      }, {timeout: 3000})
+
+      userEvent.click(screen.getByTestId('edit-project'));
+
+      await waitFor(() => {
+        expect(navigate).toBeCalledTimes(1);
+      });
+
+      await waitFor(() => {
+        expect(navigate).toBeCalledWith('/project/3/edit');
       });
     });
   })

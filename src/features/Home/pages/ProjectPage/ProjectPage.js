@@ -18,7 +18,7 @@ const ProjectPage = () => {
   });
   const project = !fetching && data?.project;
   return (
-    <MainTemplate header={<ProjectHeader project={project} />}>
+    <MainTemplate header={project && <ProjectHeader project={project} />}>
       {fetching && <CircularProgress color='primary' />}
       {project
         ?
