@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { useQuery } from 'urql';
 import { Grid, Alert, AlertTitle, CircularProgress } from '@mui/material';
-import Project from 'features/Home/molecules/Project';
+import Project from 'features/Home/organisms/Project';
 import { GET_PROJECTS } from 'queries/Project/getProjects';
 
 const ProjectList = () => {

@@ -24,6 +24,7 @@ const App = () => {
     }
     return createClient({
       url: API_URL,
+      requestPolicy: 'cache-and-network',
       fetchOptions: () => {
         const token = getToken()
         return token ? {headers: {Authorization: `Bearer ${token}`}} : {}

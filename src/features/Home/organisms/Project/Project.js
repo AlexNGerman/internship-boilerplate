@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
 import {Box, Grid, Divider, Typography} from '@mui/material';
-import TasksList from 'features/Home/organisms/TasksList';
+import TasksList from 'features/Home/molecules/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
 
 const useStyles = makeStyles({

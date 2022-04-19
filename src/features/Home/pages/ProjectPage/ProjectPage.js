@@ -5,7 +5,7 @@ import {Grid, CircularProgress, Box, Typography, Divider} from '@mui/material';
 import {parseISO, format} from 'date-fns';
 import MainTemplate from 'components/templates/MainTemplate';
 import {GET_PROJECT} from 'queries/Project/getProject';
-import TasksList from 'features/Home/organisms/TasksList';
+import TasksList from 'features/Home/molecules/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
 import DeleteProjectButton from 'features/Home/atoms/DeleteProjectButton';
 import ProjectHeader from 'features/Home/organisms/ProjectHeader';
