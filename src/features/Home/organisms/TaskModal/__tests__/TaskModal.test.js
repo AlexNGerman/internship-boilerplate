@@ -11,7 +11,7 @@ describe('TaskModal', () => {
     it('calls handleClose() with correct params', async () => {
       render();
 
-      userEvent.click(screen.getByTestId('open-modal'))
+      userEvent.click(screen.getByTestId('open-task-modal'))
       userEvent.type(screen.getByTestId('content'), 'Task Description')
       userEvent.click(screen.getByTestId('submit'))
 
@@ -26,7 +26,7 @@ describe('TaskModal', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.click(screen.getByTestId('open-modal'))
+        userEvent.click(screen.getByTestId('open-task-modal'))
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
@@ -39,7 +39,7 @@ describe('TaskModal', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.click(screen.getByTestId('open-modal'))
+        userEvent.click(screen.getByTestId('open-task-modal'))
         userEvent.type(screen.getByTestId('content'), 'D')
         userEvent.click(screen.getByTestId('submit'))
 
@@ -53,7 +53,7 @@ describe('TaskModal', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.click(screen.getByTestId('open-modal'))
+        userEvent.click(screen.getByTestId('open-task-modal'))
         userEvent.type(screen.getByTestId('content'), 'content content content content content content content content')
         userEvent.click(screen.getByTestId('submit'))
 

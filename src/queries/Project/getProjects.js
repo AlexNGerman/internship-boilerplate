@@ -1,7 +1,7 @@
 import {gql} from 'urql';
 
 export const GET_PROJECTS = gql`
-  query {
+  query GetProjects {
     projects {
       createdAt
       deadline

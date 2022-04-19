@@ -40,7 +40,7 @@ const TaskModal = ({projectId}) => {
         aria-label='Open Create Task Modal'
         variant='outlined'
         startIcon={<Add/>}
-        data-testid='open-modal'
+        data-testid='open-task-modal'
         onClick={handleOpen}
       >Add Task
       </Button>

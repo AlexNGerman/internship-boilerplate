@@ -48,7 +48,7 @@ const ProjectEdit = () => {
   }
 
   return (
-    <MainTemplate header={<ProjectHeader project={project} edit/>}>
+    <MainTemplate header={project && <ProjectHeader project={project} edit />}>
       {fetching && <CircularProgress color='primary' />}
       {project
         ?

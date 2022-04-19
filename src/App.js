@@ -61,7 +61,7 @@ const App = () => {
                   ...fetchOptions,
                   headers: {
                     ...fetchOptions.headers,
-                    "Authorization": `Bearer ${authState.token}`,
+                    'Authorization': `Bearer ${authState.token}`,
                   },
                 },
               },

@@ -11,7 +11,7 @@ describe('ProjectModal', () => {
     it('calls handleClose() with correct params', async () => {
       render();
 
-      userEvent.click(screen.getByTestId('open-modal'))
+      userEvent.click(screen.getByTestId('open-project-modal'))
       userEvent.type(screen.getByTestId('title'), 'Project Title')
       userEvent.type(screen.getByTestId('description'), 'Project Description')
       userEvent.type(screen.getByTestId('deadline'), '02/15/2022 12:36 pm')
@@ -28,10 +28,7 @@ describe('ProjectModal', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.click(screen.getByTestId('open-modal'))
-        userEvent.type(screen.getByTestId('title'), '')
-        userEvent.type(screen.getByTestId('description'), '')
-        userEvent.type(screen.getByTestId('deadline'), '')
+        userEvent.click(screen.getByTestId('open-project-modal'))
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
@@ -50,7 +47,7 @@ describe('ProjectModal', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.click(screen.getByTestId('open-modal'))
+        userEvent.click(screen.getByTestId('open-project-modal'))
         userEvent.type(screen.getByTestId('title'), 'T')
         userEvent.type(screen.getByTestId('description'), 'D')
         userEvent.click(screen.getByTestId('submit'))
@@ -68,7 +65,7 @@ describe('ProjectModal', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.click(screen.getByTestId('open-modal'))
+        userEvent.click(screen.getByTestId('open-project-modal'))
         userEvent.type(screen.getByTestId('title'), 'title title title title title title title title title title title title')
         userEvent.type(screen.getByTestId('description'), 'description description description description description description')
         userEvent.click(screen.getByTestId('submit'))
@@ -82,4 +79,30 @@ describe('ProjectModal', () => {
       });
     })
   })
+
+  describe('when user clicks on datepicker', () => {
+    it('shows date picker and selects today date', async () => {
+      render();
+
+      userEvent.click(screen.getByTestId('open-project-modal'))
+
+      await waitFor(() => {
+        expect(screen.queryByText('Today')).toBeNull();
+      });
+
+      userEvent.click(screen.getByTestId('deadline'));
+
+      await waitFor(() => {
+        expect(screen.queryByText('Today')).toBeInTheDocument();
+      });
+
+      userEvent.click(screen.queryByText('Today'));
+
+      await waitFor(() => {
+        expect(screen.queryByText('Today')).toBeNull();
+      }, {timeout: 3000});
+    });
+  });
+
+
 })

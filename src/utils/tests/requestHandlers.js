@@ -13,6 +13,12 @@ export const signInError = graphql.mutation('SignInUser', (_, res, ctx) => {
   )
 });
 
+export const getProjectsEmpty = graphql.query('GetProjects', (_, res, ctx) => {
+  return res(
+    ctx.data(responses.getProjectsEmpty),
+  )
+});
+
 export const requestHandlers = [
   graphql.mutation('CreateUser', (_, res, ctx) => {
     return res(
@@ -33,5 +39,30 @@ export const requestHandlers = [
     return res(
       ctx.data(responses.createTask),
     )
-  })
+  }),
+  graphql.mutation('DeleteTask', (_, res, ctx) => {
+    return res(
+      ctx.data(responses.deleteTask),
+    )
+  }),
+  graphql.query('GetProjects', (_, res, ctx) => {
+    return res(
+      ctx.data(responses.getProjects),
+    )
+  }),
+  graphql.query('GetProject', (_, res, ctx) => {
+    return res(
+      ctx.data(responses.getProject),
+    )
+  }),
+  graphql.mutation('DeleteProject', (req, res, ctx) => {
+    return res(
+      ctx.data(responses.deleteProject)
+    )
+  }),
+  graphql.mutation('UpdateProject', (req, res, ctx) => {
+    return res(
+      ctx.data(responses.updateProject)
+    )
+  }),
 ];

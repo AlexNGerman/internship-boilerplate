@@ -20,7 +20,7 @@ const Project = ({project}) => {
         <Grid container alignItems='center'>
           <Grid item xs>
             <Typography gutterBottom variant='h6' component='div'>
-              <Link to={`/project/${id}`} title={title} className={classes.link}>{title} - ({id})</Link>
+              <Link to={`/project/${id}`} title={title} className={classes.link}>{title}</Link>
             </Typography>
           </Grid>
         </Grid>

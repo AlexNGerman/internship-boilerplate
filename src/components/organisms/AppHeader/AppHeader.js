@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {AppBar, Toolbar, Typography, Button} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
 import {ROUTES} from 'constants/routes';
 import {getToken, removeToken} from 'utils/auth/cookies';
 
@@ -21,11 +20,11 @@ const AppHeader = () => {
         </Typography>
         {token
           ?
-          <Button onClick={logOut} variant='contained' color='error'>Logout</Button>
+          <Button onClick={logOut} data-testid='log-out' variant='contained' color='error'>Logout</Button>
           :
           <>
-            <Button to={ROUTES.SIGNIN} component={Link} variant='outlined' color='white' sx={{mr: 3}}>Sign In</Button>
-            <Button to={ROUTES.SIGNUP} component={Link} variant='contained' color='secondary'>Sign Up</Button>
+            <Button to={ROUTES.SIGNIN} component={Link} data-testid='sign-in' variant='outlined' color='white' sx={{mr: 3}}>Sign In</Button>
+            <Button to={ROUTES.SIGNUP} component={Link} data-testid='sign-up' variant='contained' color='secondary'>Sign Up</Button>
           </>
         }
       </Toolbar>
