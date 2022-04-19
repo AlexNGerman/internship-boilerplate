@@ -126,25 +126,5 @@ describe('ProjectEdit', () => {
       });
     });
   });
-
-  describe('when user clicks on edit project button', () => {
-    it('redirects to project edit page', async () => {
-      useNavigate.mockReturnValue(navigate);
-      render();
-
-      await waitFor(() => {
-        expect(screen.getByTestId('back-button')).toBeInTheDocument();
-      }, {timeout: 3000})
-
-      userEvent.click(screen.getByTestId('back-button'));
-
-      await waitFor(() => {
-        expect(navigate).toBeCalledTimes(1);
-      });
-
-      await waitFor(() => {
-        expect(navigate).toBeCalledWith('/project/3');
-      });
-    });
-  })
+  
 });
