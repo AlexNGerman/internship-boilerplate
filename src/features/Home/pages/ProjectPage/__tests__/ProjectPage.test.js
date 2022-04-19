@@ -6,7 +6,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import renderComponent from 'utils/tests/renderComponent';
 import ProjectPage from 'features/Home/pages/ProjectPage';
 import {ROUTES} from 'constants/routes';
-import theme from "utils/theme";
+import theme from 'utils/theme';
 
 jest.mock('react-router-dom', () => ({
   useParams: () => ({

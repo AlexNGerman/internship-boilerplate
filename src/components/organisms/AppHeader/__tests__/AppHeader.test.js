@@ -7,7 +7,7 @@ import renderComponent from 'utils/tests/renderComponent';
 import {removeToken, getToken} from 'utils/auth/cookies';
 import AppHeader from 'components/organisms/AppHeader';
 import {ROUTES} from 'constants/routes';
-import theme from "utils/theme";
+import theme from 'utils/theme';
 
 jest.mock('utils/auth/cookies', () => ({
   getToken: jest.fn(),

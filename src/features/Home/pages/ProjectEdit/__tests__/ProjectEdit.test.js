@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import {screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {useNavigate} from 'react-router-dom';
 import {ThemeProvider} from '@mui/material/styles';
 import renderComponent from 'utils/tests/renderComponent';
 import ProjectEdit from 'features/Home/pages/ProjectEdit';
-import theme from "utils/theme";
+import theme from 'utils/theme';
 
 jest.mock('react-router-dom', () => ({
   useParams: () => ({
