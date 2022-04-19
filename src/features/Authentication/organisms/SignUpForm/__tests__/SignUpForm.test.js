@@ -17,8 +17,8 @@ describe('SignUp', () => {
       useNavigate.mockReturnValue(navigate);
       render();
 
-      userEvent.type(screen.getByTestId('firstName'), 'John')
-      userEvent.type(screen.getByTestId('lastName'), 'Dee')
+      userEvent.type(screen.getByTestId('first-name'), 'John')
+      userEvent.type(screen.getByTestId('last-name'), 'Dee')
       userEvent.type(screen.getByTestId('email'), 'john.dee@someemail.com')
       userEvent.type(screen.getByTestId('password'), 'Alex_12345')
       userEvent.click(screen.getByTestId('submit'))
@@ -35,8 +35,8 @@ describe('SignUp', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.type(screen.getByTestId('firstName'), '')
-        userEvent.type(screen.getByTestId('lastName'), '')
+        userEvent.type(screen.getByTestId('first-name'), '')
+        userEvent.type(screen.getByTestId('last-name'), '')
         userEvent.type(screen.getByTestId('email'), '')
         userEvent.type(screen.getByTestId('password'), '')
         userEvent.click(screen.getByTestId('submit'))
@@ -86,8 +86,8 @@ describe('SignUp', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.type(screen.getByTestId('firstName'), 'd')
-        userEvent.type(screen.getByTestId('lastName'), 'd')
+        userEvent.type(screen.getByTestId('first-name'), 'd')
+        userEvent.type(screen.getByTestId('last-name'), 'd')
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
@@ -103,8 +103,8 @@ describe('SignUp', () => {
       it('renders correct errors', async () => {
         render();
 
-        userEvent.type(screen.getByTestId('firstName'), 'firstNamefirstNamefirstNamefirstNamefirstNamefirstName')
-        userEvent.type(screen.getByTestId('lastName'), 'lastNamelastNamelastNamelastNamelastNamelastNamelastName')
+        userEvent.type(screen.getByTestId('first-name'), 'firstNamefirstNamefirstNamefirstNamefirstNamefirstName')
+        userEvent.type(screen.getByTestId('last-name'), 'lastNamelastNamelastNamelastNamelastNamelastNamelastName')
         userEvent.click(screen.getByTestId('submit'))
 
         await waitFor(() => {
@@ -122,8 +122,8 @@ describe('SignUp', () => {
 
         render();
 
-        userEvent.type(screen.getByTestId('firstName'), 'John')
-        userEvent.type(screen.getByTestId('lastName'), 'Dee')
+        userEvent.type(screen.getByTestId('first-name'), 'John')
+        userEvent.type(screen.getByTestId('last-name'), 'Dee')
         userEvent.type(screen.getByTestId('email'), 'john.dee@someemail.com')
         userEvent.type(screen.getByTestId('password'), 'Alex_12345')
         userEvent.click(screen.getByTestId('submit'))

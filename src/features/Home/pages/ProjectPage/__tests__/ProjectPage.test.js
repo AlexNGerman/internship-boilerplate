@@ -24,7 +24,7 @@ describe('ProjectPage', () => {
   const navigate = jest.fn();
 
   describe('with valid data', () => {
-    it('user have project with task and description', async () => {
+    it('shows project with task and description', async () => {
       render();
 
       await waitFor(() => {

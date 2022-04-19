@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {useNavigate, MemoryRouter as Router} from 'react-router-dom';
@@ -25,7 +25,7 @@ describe('AppHeader', () => {
   const navigate = jest.fn();
   const token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNjUwMTIwNjE2fQ.tbFP6NS0kg5jVW27dndofzq769lz149rMurfHZ27tRY';
 
-  describe('render without token', () => {
+  describe('without token', () => {
     it('should show sign in and sign up buttons', async () => {
       render();
 
@@ -39,8 +39,8 @@ describe('AppHeader', () => {
     });
   });
 
-  describe('render with token', () => {
-    it('should show log out button', async () => {
+  describe('with token', () => {
+    it('should show logout button', async () => {
       getToken.mockReturnValue(token);
       render();
 
@@ -50,8 +50,8 @@ describe('AppHeader', () => {
     })
   })
 
-  describe('when user clicks on Logout button', () => {
-    it('should delete token and navigate to Sign In page', async () => {
+  describe('when user clicks on logout button', () => {
+    it('should delete token and navigate to sign in page', async () => {
       getToken.mockReturnValue(token);
       useNavigate.mockReturnValue(navigate);
       render();

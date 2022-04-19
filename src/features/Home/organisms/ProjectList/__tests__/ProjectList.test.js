@@ -1,6 +1,5 @@
 import React from 'react';
 import {screen, waitFor} from '@testing-library/react';
-import userEvent from "@testing-library/user-event";
 import { MemoryRouter as Router } from 'react-router-dom';
 import renderComponent from 'utils/tests/renderComponent';
 import ProjectList from 'features/Home/organisms/ProjectList';
@@ -14,7 +13,7 @@ describe('ProjectList', () => {
   );
 
   describe('with valid data', () => {
-    it('user have project with task', async () => {
+    it('shows project with task', async () => {
       render();
 
       await waitFor(() => {
@@ -26,7 +25,7 @@ describe('ProjectList', () => {
       });
     });
 
-    it('user don\'t have projects', async () => {
+    it('shows project list without projects', async () => {
       server.use(getProjectsEmpty);
 
       render();
@@ -36,5 +35,4 @@ describe('ProjectList', () => {
       });
     });
   })
-
 })

@@ -78,7 +78,7 @@ const SignUpForm = () => {
                   <Field component={TextField}
                          name='firstName'
                          inputProps={{
-                           'data-testid': 'firstName',
+                           'data-testid': 'first-name',
                          }}
                          fullWidth label='First name'
                          placeholder='First name'
@@ -89,7 +89,7 @@ const SignUpForm = () => {
                   <Field component={TextField}
                          name='lastName'
                          inputProps={{
-                           'data-testid': 'lastName',
+                           'data-testid': 'last-name',
                          }}
                          fullWidth
                          label='Last name'

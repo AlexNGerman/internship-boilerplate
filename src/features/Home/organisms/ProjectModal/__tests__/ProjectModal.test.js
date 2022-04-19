@@ -81,7 +81,7 @@ describe('ProjectModal', () => {
   })
 
   describe('when user clicks on datepicker', () => {
-    it('shows datepicker and select today date', async () => {
+    it('shows date picker and selects today date', async () => {
       render();
 
       userEvent.click(screen.getByTestId('open-project-modal'))
