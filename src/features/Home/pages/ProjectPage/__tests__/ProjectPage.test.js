@@ -41,27 +41,6 @@ describe('ProjectPage', () => {
     });
   });
 
-  describe('when user clicks on Projects List App back button', () => {
-    it('redirects to home page', async () => {
-      useNavigate.mockReturnValue(navigate);
-      render();
-
-      await waitFor(() => {
-        expect(screen.getByTestId('back-button')).toBeInTheDocument();
-      }, {timeout: 3000})
-
-      userEvent.click(screen.getByTestId('back-button'));
-
-      await waitFor(() => {
-        expect(navigate).toBeCalledTimes(1);
-      });
-
-      await waitFor(() => {
-        expect(navigate).toBeCalledWith(ROUTES.HOME);
-      });
-    });
-  })
-
   describe('when user clicks on delete project button', () => {
     it('redirects to home page', async () => {
       useNavigate.mockReturnValue(navigate);
@@ -83,24 +62,4 @@ describe('ProjectPage', () => {
     });
   })
 
-  describe('when user clicks on edit project button', () => {
-    it('redirects to project edit page', async () => {
-      useNavigate.mockReturnValue(navigate);
-      render();
-
-      await waitFor(() => {
-        expect(screen.getByTestId('edit-project')).toBeInTheDocument();
-      }, {timeout: 3000})
-
-      userEvent.click(screen.getByTestId('edit-project'));
-
-      await waitFor(() => {
-        expect(navigate).toBeCalledTimes(1);
-      });
-
-      await waitFor(() => {
-        expect(navigate).toBeCalledWith('/project/3/edit');
-      });
-    });
-  })
 });
