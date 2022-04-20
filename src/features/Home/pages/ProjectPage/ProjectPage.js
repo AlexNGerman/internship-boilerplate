@@ -17,13 +17,10 @@ const ProjectPage = () => {
   return (
     <MainTemplate header={project && <ProjectHeader project={project} />}>
       {fetching && <CircularProgress color='primary' />}
-      {project
-        ?
-        <>
-          <Project key={project.id} project={project} single />
-        </>
-        :
-        <p>Project not found</p>}
+      {project ?
+                <Project key={project.id} project={project} single />
+               :
+                <p>Project not found</p>}
     </MainTemplate>
   );
 }

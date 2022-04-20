@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {Checkbox, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import {useMutation} from 'urql';
 import {makeStyles} from '@mui/styles';
@@ -11,10 +11,10 @@ const useStyles = makeStyles({
   }
 });
 
-
 const TasksList = ({tasks}) => {
   const classes = useStyles();
   const [{fetching}, updateTask] = useMutation(UPDATE_TASK);
+  const sortedTasks = useMemo(() => tasks.sort( (first,second) => {return (first.id - second.id)} ), [tasks]);
 
   const handleToggle = (id, done) => {
     updateTask({id: id, done: !done})
@@ -22,7 +22,7 @@ const TasksList = ({tasks}) => {
 
   return (
     <List sx={{width: '100%', m: 0, px: 2, bgcolor: 'background.paper'}}>
-      {tasks.map(({content, id, done}) =>
+      {sortedTasks.map(({content, id, done}) =>
         <ListItem
           key={id}
           secondaryAction={<DeleteTaskButton id={id} />}
