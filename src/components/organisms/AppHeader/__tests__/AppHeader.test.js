@@ -17,9 +17,7 @@ jest.mock('utils/auth/cookies', () => ({
 describe('AppHeader', () => {
   const render = () => renderComponent(
     <ThemeProvider theme={theme}>
-      <Router>
-        <AppHeader />
-      </Router>
+      <AppHeader />
     </ThemeProvider>
   );
   const navigate = jest.fn();

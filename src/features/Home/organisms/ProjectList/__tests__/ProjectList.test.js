@@ -6,11 +6,7 @@ import ProjectList from 'features/Home/organisms/ProjectList';
 import { server, getProjectsEmpty } from 'utils/tests';
 
 describe('ProjectList', () => {
-  const render = () => renderComponent(
-    <Router>
-      <ProjectList />
-    </Router>
-  );
+  const render = () => renderComponent(<ProjectList />);
 
   describe('with valid data', () => {
     it('shows project with task', async () => {

@@ -1,1 +1,1 @@
-export { default } from './ProjectEdit';
+export {default} from './ProjectEdit';

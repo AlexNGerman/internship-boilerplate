@@ -1,11 +1,9 @@
 import React from 'react';
 import {Box, Grid, Divider, Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
-import {parseISO, format} from 'date-fns';
 import {Link} from 'react-router-dom';
 import TasksList from 'features/Home/molecules/TasksList';
 import TaskModal from 'features/Home/organisms/TaskModal';
-import DeleteProjectButton from 'features/Home/atoms/DeleteProjectButton';
 
 const useStyles = makeStyles({
   link: {
@@ -13,8 +11,8 @@ const useStyles = makeStyles({
   }
 });
 
-const Project = ({project, single = false}) => {
-  const {id, title, deadline, description, tasks} = project;
+const Project = ({project, details }) => {
+  const {id, title, tasks} = project;
   const classes = useStyles();
   return (
     <>
@@ -23,24 +21,10 @@ const Project = ({project, single = false}) => {
           <Grid container alignItems='center'>
             <Grid item xs>
               <Typography gutterBottom variant='h6' component='div'>
-                {single ? title : <Link to={`/project/${id}`} title={title} className={classes.link}>{title}</Link> }
+                <Link to={`/project/${id}`} title={title} className={classes.link}>{title}</Link>
               </Typography>
             </Grid>
-
-            {single &&
-              <>
-                <Grid item xs={12}>
-                  <Typography gutterBottom variant='p' component='p'>
-                    Deadline: {format(parseISO(deadline), 'MM/dd/yyyy HH:mm a')}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography gutterBottom variant='p' component='p'>
-                    Description: {description}
-                  </Typography>
-                </Grid>
-              </>
-            }
+            {details}
           </Grid>
         </Box>
         <Divider variant='middle' />
@@ -49,14 +33,6 @@ const Project = ({project, single = false}) => {
           <TaskModal projectId={id} />
         </Box>
       </Box>
-
-      {single &&
-        <Grid container alignItems='center'>
-          <Grid item xs={12}>
-            <DeleteProjectButton id={id} />
-          </Grid>
-        </Grid>
-      }
     </>
   );
 }
