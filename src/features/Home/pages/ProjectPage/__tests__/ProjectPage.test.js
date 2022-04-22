@@ -1,26 +1,13 @@
 import React from 'react';
 import {screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {useNavigate} from 'react-router-dom';
-import {ThemeProvider} from '@mui/material/styles';
+import {useNavigate, MemoryRouter as Router} from 'react-router-dom';
 import renderComponent from 'utils/tests/renderComponent';
 import ProjectPage from 'features/Home/pages/ProjectPage';
 import {ROUTES} from 'constants/routes';
-import theme from 'utils/theme';
-
-jest.mock('react-router-dom', () => ({
-  useParams: () => ({
-    id: 3,
-  }),
-  useNavigate: jest.fn(),
-}));
 
 describe('ProjectPage', () => {
-  const render = () => renderComponent(
-    <ThemeProvider theme={theme}>
-      <ProjectPage />
-    </ThemeProvider>
-  );
+  const render = () => renderComponent(<ProjectPage />);
   const navigate = jest.fn();
 
   describe('with valid data', () => {

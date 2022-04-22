@@ -12,7 +12,10 @@ afterAll(() => server.close())
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useParams: jest.fn(),
+  useParams: () => ({
+    id: 3,
+  }),
   useHistory: jest.fn(),
   useNavigate: jest.fn(),
+
 }));

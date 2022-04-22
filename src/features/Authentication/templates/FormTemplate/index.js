@@ -1,1 +1,1 @@
-export { default } from './FormTemplate';
+export {default} from './FormTemplate';
