@@ -14,10 +14,10 @@ const useStyles = makeStyles({
 const TasksList = ({tasks}) => {
   const classes = useStyles();
   const [{fetching}, updateTask] = useMutation(UPDATE_TASK);
-  const sortedTasks = useMemo(() => tasks.sort((first,second) => first.id - second.id), [tasks]);
+  const sortedTasks = useMemo(() => tasks.sort((first, second) => first.id - second.id), [tasks]);
 
   const handleToggle = (id, done) => {
-    updateTask({id: id, done: !done})
+    updateTask({id, done})
   };
 
   return (
@@ -29,7 +29,7 @@ const TasksList = ({tasks}) => {
           disablePadding
           disabled={fetching}
         >
-          <ListItemButton onClick={() => handleToggle(id, done)} key={id} dense>
+          <ListItemButton onClick={() => handleToggle(id, !done)} key={id} dense>
             <ListItemIcon>
               <Checkbox
                 edge='start'

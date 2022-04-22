@@ -1,13 +1,13 @@
 import React from 'react';
 import {useQuery} from 'urql';
 import {useParams} from 'react-router-dom'
-import {CircularProgress, Grid, Typography} from '@mui/material';
+import {CircularProgress, Grid} from '@mui/material';
 import MainTemplate from 'components/templates/MainTemplate';
 import {GET_PROJECT} from 'queries/Project/getProject';
 import ProjectHeader from 'features/Home/organisms/ProjectHeader';
+import ProjectDescription from 'features/Home/molecules/ProjectDescription';
 import Project from 'features/Home/organisms/Project';
 import DeleteProjectButton from 'features/Home/atoms/DeleteProjectButton';
-import {format, parseISO} from "date-fns";
 
 const ProjectPage = () => {
   const {id} = useParams();
@@ -16,18 +16,7 @@ const ProjectPage = () => {
     variables: {id},
   });
   const project = !fetching && data?.project;
-  const details = project && <>
-    <Grid item xs={12}>
-      <Typography gutterBottom variant='p' component='p'>
-        Deadline: {format(parseISO(project.deadline), 'MM/dd/yyyy HH:mm a')}
-      </Typography>
-    </Grid>
-    <Grid item xs={12}>
-      <Typography gutterBottom variant='p' component='p'>
-        Description: {project.description}
-      </Typography>
-    </Grid>
-  </>;
+  const details = project && <ProjectDescription project={project} />;
 
   return (
     <MainTemplate header={project && <ProjectHeader project={project} />}>
